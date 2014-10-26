@@ -1,0 +1,4 @@
+RewriteEngine on
+# If you need to skip folders add them to the list below.
+RewriteCond $1 !^(index\.php|assets|files|css|js|images|robots\.txt)
+RewriteRule ^(.*)$ /froosh/index.php/$1 [L]
