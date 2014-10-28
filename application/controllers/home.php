@@ -21,7 +21,7 @@ class Home extends CI_Controller {
 	 
 	public function index()
 	{
-		/*if ($this->agent->is_mobile())
+		if ($this->agent->is_mobile())
 		{
     		$this->load->view('home_mobile');
 
@@ -30,8 +30,8 @@ class Home extends CI_Controller {
 		{
 		$this->load->view('home');
 
-		} */
-		$this->mail();
+		}
+		//$this->mail();
 	
 		
 	}
@@ -94,8 +94,10 @@ class Home extends CI_Controller {
 	
 			$data = $this->input->post();
 			$this->load->model('mail_module');
-	 
+			 
 			$x=$this->mail_module->umregister($data);
+			
+			
 				if($x=='')
 				{
 
@@ -171,6 +173,10 @@ class Home extends CI_Controller {
 			$data['user']['email']=$this->input->post('uemail');
 			$data['user']['mode']=$this->input->post('umode');
 			$data['umedia'] = $this->input->post('umedia');
+			if($this->input->post('umode')!='mail')
+			$data['user']['rusername']=1;
+			else
+			$data['user']['rusername']=0;
 			$data['image']=$captcha['image'];
 					if ($this->agent->is_mobile())
 					{
@@ -186,6 +192,19 @@ class Home extends CI_Controller {
 		}
 	}
 	
+	public function mview()
+	{
+		if ($this->agent->is_mobile())
+		{
+			$this->load->view('aregister_mobile');
+		}
+		elseif ($this->agent->is_browser())
+		{
+			$this->load->view('aregister');
+		}
+	}
+
+
 	function check_usermail(){
 	$this->load->model('mail_module');
 	$return_value =$this->mail_module->uemail_verify();
@@ -196,5 +215,18 @@ class Home extends CI_Controller {
     //echo '<span style="color:#0c0">Email Available</span>';
 	echo "available";
 	}
+
+	
+	function check_username(){
+	$this->load->model('mail_module');
+	$return_value =$this->mail_module->uname_verify();
+	if(!$return_value)
+    //echo '<span style="color:#f00">UserName already in use. </span>';
+	echo "use";
+    else
+    //echo '<span style="color:#0c0">UserName Available</span>';
+	echo "available";
+	}
+
 }
 
