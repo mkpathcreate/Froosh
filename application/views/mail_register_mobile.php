@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<?php
+$ci = get_instance(); // CI_Loader instance
+$ci->load->config('oauth',TRUE);
+$x=$ci->config->item('oauth');
+
+//echo $x['twitter']['redirect_uri'];
+//echo $x['instagram']['redirect_uri'];
+//echo $x['facebook']['redirect_uri'];
+
+?>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +48,40 @@
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 		
+
+
+  $('#uname').blur(function(){
+    var a = $("#uname").val();
+	
+    
+    if (a !=="") 
+   	{
+               
+		$url="/froosh/index.php/home/check_username";
+        $.post($url, {
+            uname: $('#uname').val()
+        }, function(response){
+                
+			if(response=="use")
+		{
+		$('#text2').html('<span style="color:#f00;float:left" >Username already in use. </span>');
+		$('input[type="submit"]').attr('disabled','disabled');
+		}
+		else
+		{
+		$('#text2').html('<span style="color:#0c0;float:left">Username Available</span>');
+		
+			 $('input[type="submit"]').removeAttr('disabled');
+		}
+        });
+	}
+        return false;
+   
+	
+	});
+
+
+
 		
 	  $('#uemail').blur(function(){
     var a = $("#uemail").val();
@@ -67,6 +112,10 @@
     }
 	
 	});
+
+
+
+
 		
 			jQuery("#formID").validationEngine();
 
@@ -138,6 +187,15 @@
 	{ 
 	    // this gets called from the popup window and updates the field with a new value 
 	    document.getElementById(id).value = value; 
+		x="#"+id;
+		if(id=="uname")
+		$(x).attr('readonly', true);
+		
+	} 
+	function updateview() 
+	{ 
+	    // this gets called from the popup window and updates the field with a new value 
+	    window.location.href = "<?php echo $this->config->item('base_url'); ?>home/mview";
 	} 
 		
 	</script>
@@ -186,8 +244,8 @@
 	<fieldset>
 	<div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
-	<input type=text name="uname" id="uname" class="validate[required,custom[onlyLetterNumber],minSize[6],maxSize[50]] form-control" placeholder="Username" value="<?php if(isset($user['username']))echo $user['username'];?>"> </div>
-                    <div class="clearfix"></div><br>
+	<input type=text name="uname" id="uname" class="validate[required,custom[onlyLetterNumber],minSize[4],maxSize[50]] form-control" placeholder="Username" value="<?php if(isset($user['username']))echo $user['username'];?>" <?php if(isset($user['rusername']) && $user['rusername']==1) echo "readonly";?>> </div>
+                    <div class="clearfix"></div><div id="text2" style="padding-bottom: 5px;padding-top: 5px;"></div><br>
 	 <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope red"></i></span>
 	<input type=text name="uemail" id="uemail" class="validate[required,custom[email]] form-control" value="<?php if(isset($user['email']))echo $user['email'];?>"  placeholder="Email"></div>
@@ -202,8 +260,7 @@
 	<div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
 	<input type=password name="ucpassword" id="ucpassword" class="validate[required,equals[upassword],minSize[6],maxSize[50]] text-input form-control" value="" placeholder="Conform Password"></div>
-
-<div class="clearfix"></div><br>
+ <div class="clearfix"></div><br>
 <div style="margin-left:10px"><label style="margin-left:10px">Captcha:</label>
 <?php 
 echo $image;?></div>
@@ -218,7 +275,7 @@ echo $image;?></div>
                     <div class="clearfix"></div><br>
 					 <p class="center col-md-15">
 <input type=hidden name="umode" id="umode" value="<?php if(isset($user['mode']))echo $user['mode']; else echo "mail"?>"><br>
-	<input type=hidden name="umedia" id="umedia" value="<?php if(isset($umedia))echo $umedia; else echo "PC"?>"><br>
+	<input type=hidden name="umedia" id="umedia" value="<?php if(isset($umedia))echo $umedia; else echo "Mobile"?>"><br>
 	<input type=submit value="Register" id="subutton" class="btn btn-primary">
 <a class="btn btn-block btn-social btn-facebook"  onClick="connect_fb()">
             <i class="fa fa-facebook"></i>Sign in with Facebook</a>
@@ -227,10 +284,10 @@ echo $image;?></div>
             <i class="fa fa-twitter"></i> Sign in with Twitter</a>
 
 <a class="btn btn-block btn-social btn-instagram" onClick="connect_ig()">
-            <i class="fa fa-instagram"></i> Sign in with Instagram</a> 
-	
+            <i class="fa fa-instagram"></i> Sign in with Instagram</a> 	
 	</form>
  
+
 	</div>
 
 	
@@ -238,4 +295,5 @@ echo $image;?></div>
 
 </body>
 </html>
+
 

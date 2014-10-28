@@ -228,23 +228,41 @@ $post="client_id=".$this->info['id']."&client_secret=".$this->info['secret']."&g
 				$CI =&get_instance();
 				$output['user']['mode']="instagram";
 				$data=$output;
-					if($CI->agent->is_mobile())
+					$CI->load->model('mail_module');
+					$return_value =$CI->mail_module->uname_verify1($data['user']['username']);
+					if(!$return_value)
 					{
-					//$CI->load->view('mail_register_mobile',$data);	
-					$data['umedia']="Mobile";
-					$na=$data['user']['username'];
-						
-					echo "<script>window.close();window.opener.updateValue('uname','$na');window.opener.updateValue('umode','instagram');window.opener.updateValue('uemail','$em');</script>";
+						if ($CI->agent->is_mobile())
+						{
+						$CI->load->view('reg_success_mobile');
+						}
+						elseif ($CI->agent->is_browser())
+						{
+						//$pa=$this->load->view('reg_success');
+						echo "<script>window.close();window.opener.updateview();</script>";
+						$this->load->view('reg_success');
+						}
+									
 					}
-					elseif ($CI->agent->is_browser())
+					else
 					{
+						if($CI->agent->is_mobile())
+						{
+						//$CI->load->view('mail_register_mobile',$data);	
+						$data['umedia']="Mobile";
+						$na=$data['user']['username'];
+						
+						echo "<script>window.close();window.opener.updateValue('uname','$na');window.opener.updateValue('umode','instagram');window.opener.updateValue('uemail','$em');</script>";
+						}
+						elseif ($CI->agent->is_browser())
+						{
 						//$CI->load->view('mail_register',$data);	
-					$data['umedia']="PC";
-					$na=$data['user']['username'];
+						$data['umedia']="PC";
+						$na=$data['user']['username'];
 						
-					echo "<script>window.close();window.opener.updateValue('uname','$na');window.opener.updateValue('umode','instagram');window.opener.updateValue('uemail','$em');</script>";
-					}
-					
+						echo "<script>window.close();window.opener.updateValue('uname','$na');window.opener.updateValue('umode','instagram');window.opener.updateValue('uemail','$em');</script>";
+						}
+					}			
 
 					
 				

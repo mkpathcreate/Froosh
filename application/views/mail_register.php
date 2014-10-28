@@ -48,6 +48,39 @@ $x=$ci->config->item('oauth');
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 		
+
+
+  $('#uname').blur(function(){
+    var a = $("#uname").val();
+	
+    if (a !=="") 
+   	{
+              
+		$url="/froosh/index.php/home/check_username";
+        $.post($url, {
+            uname: $('#uname').val()
+        }, function(response){
+                
+			if(response=="use")
+		{
+		$('#text2').html('<span style="color:#f00;float:left" >Username already in use. </span>');
+		$('input[type="submit"]').attr('disabled','disabled');
+		}
+		else
+		{
+		$('#text2').html('<span style="color:#0c0;float:left">Username Available</span>');
+		
+			 $('input[type="submit"]').removeAttr('disabled');
+		}
+        });
+	}
+        return false;
+   
+	
+	});
+
+
+
 		
 	  $('#uemail').blur(function(){
     var a = $("#uemail").val();
@@ -78,6 +111,10 @@ $x=$ci->config->item('oauth');
     }
 	
 	});
+
+
+
+
 		
 			jQuery("#formID").validationEngine();
 
@@ -149,6 +186,15 @@ $x=$ci->config->item('oauth');
 	{ 
 	    // this gets called from the popup window and updates the field with a new value 
 	    document.getElementById(id).value = value; 
+		x="#"+id;
+		if(id=="uname")
+		$(x).attr('readonly', true);
+		
+	} 
+	function updateview() 
+	{ 
+	    // this gets called from the popup window and updates the field with a new value 
+	    window.location.href = "<?php echo $this->config->item('base_url'); ?>home/mview";
 	} 
 		
 	</script>
@@ -197,8 +243,8 @@ $x=$ci->config->item('oauth');
 	<fieldset>
 	<div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
-	<input type=text name="uname" id="uname" class="validate[required,custom[onlyLetterNumber],minSize[6],maxSize[50]] form-control" placeholder="Username" value="<?php if(isset($user['username']))echo $user['username'];?>"> </div>
-                    <div class="clearfix"></div><br>
+	<input type=text name="uname" id="uname" class="validate[required,custom[onlyLetterNumber],minSize[4],maxSize[50]] form-control" placeholder="Username" value="<?php if(isset($user['username']))echo $user['username'];?>" <?php if(isset($user['rusername']) && $user['rusername']==1) echo "readonly";?>> </div>
+                    <div class="clearfix"></div><div id="text2" style="padding-bottom: 5px;padding-top: 5px;"></div><br>
 	 <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope red"></i></span>
 	<input type=text name="uemail" id="uemail" class="validate[required,custom[email]] form-control" value="<?php if(isset($user['email']))echo $user['email'];?>"  placeholder="Email"></div>
