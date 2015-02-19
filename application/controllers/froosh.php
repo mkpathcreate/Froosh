@@ -100,7 +100,6 @@ class froosh extends CI_Controller {
         $crud->set_lang_string('list_record','User');
         $crud->set_lang_string('form_edit','Edit');
         $crud->add_action('Images', base_url().'assets/grocery_crud/themes/flexigrid/css/images/camera.png', 'images_admin/example2');
-
     
         $crud->set_subject('');
         
@@ -139,7 +138,7 @@ class froosh extends CI_Controller {
         
           
         $crud->set_lang_string('alert_edit_form','The data you had change may not be saved.\\nAre you sure you want to go back to list? ');
-
+        
         
              
         try
@@ -175,7 +174,7 @@ class froosh extends CI_Controller {
   
 	public function _callback_webpage_url($value, $row)
 {
-
+	
 $v2=0;
 $this->db->select_max('phase');
 	$this->db->from('images');
@@ -189,7 +188,7 @@ $this->db->select_max('phase');
 	$v2=$res_phase[0]['phase'];
 
 
-
+	
 	if($v2==0){
    return "<p style='color:red'>$v2</p>";
   }

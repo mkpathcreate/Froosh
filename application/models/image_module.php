@@ -6,13 +6,13 @@ if (!defined('BASEPATH'))
 
 class Image_module extends CI_Model {
  
-
+    //table name
     private $file = 'files';   // files    
      
     function save_files_info($files) {
-       
+        //start db traction
         $this->db->trans_start();
-        
+        //file data
         $file_data = array();
         foreach ($files as $file) {
             $file_data[] = array(
@@ -22,11 +22,11 @@ class Image_module extends CI_Model {
                 'upload_date' => date('Y-m-d H:i:s')
             );
         }
-       
+        
         $this->db->insert_batch($this->file, $file_data);
-    
+       
         $this->db->trans_complete();
-     
+       
         if ($this->db->trans_status() === FALSE) {
             foreach ($files as $file) {
                 $file_path = $file['full_path'];
@@ -35,7 +35,7 @@ class Image_module extends CI_Model {
                     unlink($file_path);
                 }
             }
-           
+          
             $this->db->trans_rollback();
             return FALSE;
         } else {
@@ -48,7 +48,7 @@ class Image_module extends CI_Model {
 	
 	 $this->db->insert('images',$imdata);
 	 return $this->db->insert_id();
-
+	
 	
 	
 	}
@@ -77,7 +77,7 @@ class Image_module extends CI_Model {
 			return $res;
 		}
 		
-		
+		//return $res;
 	}
 	else
 	false;

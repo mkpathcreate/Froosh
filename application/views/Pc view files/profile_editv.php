@@ -61,7 +61,7 @@
 		ucity:$("#ucity").val()
 			}, function(response){
 				if(response == "success")
-				alert("プロフィール正常に更新");
+				alert("Profile Updated successfully");
 				});
 				return false;
 			

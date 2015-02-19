@@ -72,7 +72,7 @@ function example2_2()
 	{
 		$image_crud = new image_CRUD();
 		$image_crud->unset_upload();
-		
+	
 		$image_crud->set_primary_key_field('id');
 		$image_crud->set_url_field('image_name');
 		$image_crud->set_table('favourite')

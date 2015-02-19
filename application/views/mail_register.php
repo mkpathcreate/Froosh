@@ -7,15 +7,12 @@
 <meta name="Description" content="">
 <meta name="Keywords" content="">
 <meta name="author" content="">
-		<?php
+<?php
 $ci = get_instance(); 
 $ci->load->config('oauth',TRUE);
 $x=$ci->config->item('oauth');
 
 ?>
-	
-  
-	
 	<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/validationEngine.jquery.css" type="text/css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/css/default.css" media="all">
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/css/common.css" media="all">
@@ -29,9 +26,7 @@ $x=$ci->config->item('oauth');
 	</script>
 	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
 	</script>
-
 <script src="<?php echo $this->config->item('base_url'); ?>assets/js/common.js"></script>
-
 <script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery.customSelect.js"></script>
 	
 	<script type="text/javascript">
@@ -47,8 +42,6 @@ var temp=new Date((myDate.getFullYear()-18), "11","31");
 var prettyDate2=temp.getFullYear()+ '-' +temp.getMonth() + '-' +temp.getDate();
 
 var maximumDate = '2013-07-15';
-
-
 
   $('#uname').blur(function(){
     var a = $("#uname").val();
@@ -116,7 +109,6 @@ $('#subutton').click(function(){
         $("#recaptcha_reload").click(); 
 	 return false;
 	}
-	
  });
 
 
@@ -126,7 +118,6 @@ $('#subutton').click(function(){
 	
     
     var filter =/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-      
     if(filter.test(a)){
                
 		$url="/home/check_usermail";
@@ -164,7 +155,7 @@ $('#subutton').click(function(){
             throw new Error("options.path must not be empty");
         }
         options = $.extend({
-            windowName: 'ConnectWithOAuth' // should not include space for IE
+            windowName: 'ConnectWithOAuth' 
           , windowOptions: 'location=0,status=0,width=1200,height=800'
           , callback: function(){ window.location.reload(); }
         }, options);
@@ -177,14 +168,11 @@ $('#subutton').click(function(){
             }
         }, 1000);
  	   };
- 
- 	  
+
 	    $.fn.oauthpopup = function(options) {
 	        $this = $(this);
         	$this.click($.oauthpopup.bind(this, options));
 	    };
-
-
 
 		});
 		
@@ -198,7 +186,7 @@ $('#subutton').click(function(){
 	     $.oauthpopup({
           path: 'http://test.froosh-cp.jp/index.php/auth/session/twitter/',
           callback: function(){
-           
+
 		   }        
 	    });
 	}
@@ -208,7 +196,7 @@ $('#subutton').click(function(){
 	     $.oauthpopup({
           path: 'http://test.froosh-cp.jp/index.php/auth/session/facebook',
           callback: function(){
-          
+
 		   }        
 	    });
 	}
@@ -223,7 +211,7 @@ $('#subutton').click(function(){
 	}
 	function updateValue(id, value) 
 	{ 
-	     
+	    
 
 		if(id=="ugender" && value=="male")
 		{
@@ -246,7 +234,6 @@ $('#subutton').click(function(){
 	} 
 	function updateview() 
 	{ 
-	   
 	    window.location.href = "<?php echo $this->config->item('base_url'); ?>home/mview";
 	} 
 		
@@ -259,13 +246,13 @@ $('#subutton').click(function(){
     <div id="head_tag">
         <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/tag.png" alt="froosh">
     </div>
-
     <div id="header">
         <div class="logo"><a href="mypage.php"><img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/logo.png" alt="froosh"></a></div>
+
     </div>
+
     <div id="main">
     
-
         <div class="titleGroup">
             <h1 class="title_text bold">新規アカウント登録</h1>
         </div>
@@ -311,9 +298,8 @@ $('#subutton').click(function(){
                         </td>
                     </tr>
 					
-
-					
-				<tr>
+				
+	<tr>
                         <th><p class="bold mt10">生年月日</p></th>
                         <td>
                         <div class="select_birth">
@@ -410,8 +396,8 @@ $('#subutton').click(function(){
                                 <option value="1997">1997</option>
                             </select>
                             </div>
-                            <div class="birthSelect_bg pie"><!--
-                            --><select name="ubmonth" id="birth_month" class="birthSelect">
+                            <div class="birthSelect_bg pie">
+                           <select name="ubmonth" id="birth_month" class="birthSelect">
                                 <option value="">月</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -427,8 +413,8 @@ $('#subutton').click(function(){
                                 <option value="12">12</option>
                             </select>
                             </div>
-                            <div class="birthSelect_bg pie"><!--
-                            --><select name="ubday" id="birth_day" class="birthSelect">
+                            <div class="birthSelect_bg pie">
+                            <select name="ubday" id="birth_day" class="birthSelect">
                                 <option value="">日</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -537,16 +523,10 @@ $('#subutton').click(function(){
 </p><span class="loginerror"> <?php if ($this->session->flashdata('error') !== FALSE) { echo $this->session->flashdata('error'); } ?></span></th>
 						<td id="capimage" style="width:200px"><?php echo $recaptcha_html; ?></td>
 					</tr>
-                </table>
-					
+                </table>			
 					
 
-<!--<div style="margin-left:10px"><label style="margin-left:10px">Captcha:</label>
- <span class="loginerror"> <?php if ($this->session->flashdata('error') !== FALSE) { echo $this->session->flashdata('error'); } ?></span>-->
-<div id="capimage"> <?php 
-//echo $image;?><?php //echo $recaptcha_html; ?></div></div>
   
-
  <div id="captchastatus" style="padding-bottom: 5px;padding-top: 5px;"></div><br>
 
 
@@ -556,7 +536,6 @@ $('#subutton').click(function(){
 	<input type=hidden name="umedia" id="umedia" value="<?php if(isset($umedia))echo $umedia; else echo "PC"?>"><br>
 	
 	<div class="input_btn mt0">
-                  
 	<input type="submit" value="経由でログイン" style="width:400px" id="subutton" class="btn btn_save pie">
 	</div>
 
@@ -584,11 +563,12 @@ $('#subutton').click(function(){
 
     </div>
 	</div>
+
     
+
 	<br>
     <div id="footer">
         <address>XrossFace Holdings Co., LTD.</address>
     </div>
-   
 </body>
 </html>

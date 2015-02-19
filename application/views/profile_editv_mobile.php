@@ -8,21 +8,41 @@
         <title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - アカウントの編集</title>
         <meta name="description" content="">
         <meta name="author" content="">
+<!--
+        <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/bootstrap-social.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/datepicker3.css">
+
+         Custom CSS 
+        <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/stylish-portfolio.css" rel="stylesheet">
+         Custom Fonts 
+        <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	-->
+	
 	
 	<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/validationEngine.jquery.css" type="text/css"/>
+        
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/default.css" media="screen,print">
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/common.css" media="screen,print">
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/webfont.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/form.css">        
         
+	<!--<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/template.css" type="text/css"/>-->
 	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery-1.8.2.min.js" type="text/javascript">
 	</script>  
 	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/languages/jquery.validationEngine-ja.js" type="text/javascript" charset="utf-8">
 	</script>
 	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
 	</script>
+<!--<script src="<?php echo $this->config->item('base_url'); ?>assets/js/bootstrap-datepicker.js" type="text/javascript" charset="utf-8"></script>
+	 <script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery-1.11.0.js"></script> 
+  Bootstrap Core JavaScript 
+    <script src="<?php echo $this->config->item('base_url'); ?>assets/assets2/js/bootstrap.min.js"></script>-->
+        
         
             <script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/common.js"></script>
+                <!-- jQuery jQuery customSelect (select box styling plugin) -->
             <script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/jquery.customSelect.js"></script>
             
             <script type="text/javascript">
@@ -38,14 +58,21 @@
 		$("#upassword").focus(function() {
 		  this.value = "";
 		});
+		/*$('#datetimepicker5').datepicker({
+					format: 'yyyy-mm-dd',
+    autoclose: true,
+    keyboardNavigation : true 
+				});*/
 		$("#subutton").on("click",function(e){
 		e.preventDefault();
 		x=$('input[name="ugender"]:checked').val();
 		if(x==1){
+		//x="Male";
 		x="男性";
 		}
 		if(x==2)
 		{
+		//x="Female";
 		x="女性";
 		}
 		$url="<?php echo $this->config->item('base_url');?>home/profile_modify";
@@ -61,23 +88,122 @@
 		ucity:$("#ucity").val()
 			}, function(response){
 				if(response=="success")
-				alert("Profile Updated successfully");
+				alert("プロフィール正常に更新");
 				});
 				return false;
 			
 		});
 
 
-  	jQuery("#formID").validationEngine();
+  /*$('#uname').blur(function(){
+    var a = $("#uname").val();
+	
+    if (a !=="") 
+   	{
+              
+		$url="/froosh/index.php/home/check_username";
+        $.post($url, {
+            uname: $('#uname').val()
+        }, function(response){
+                
+			if(response=="use")
+		{
+		$('#text2').html('<span style="color:#f00;float:left" >Username already in use. </span>');
+		$('input[type="submit"]').attr('disabled','disabled');
+		}
+		else
+		{
+		$('#text2').html('<span style="color:#0c0;float:left">Username Available</span>');
+		
+			 $('input[type="submit"]').removeAttr('disabled');
+		}
+        });
+	}
+        return false;
+   
+	
+	}); 
 
-	$("#formID").bind("jqv.field.result", function(event, field, errorFound, prompText){ console.log(errorFound) })
+
+$('#captcha').blur(function(){
+    var a = $("#captcha").val();
+	
+    if (a !=="") 
+   	{
+              
+		$url="/froosh/index.php/home/check_captcha";
+        $.post($url, {
+            captcha: $('#captcha').val()
+        }, function(response){
+                
+			if(response!="use")
+		{
+		$('#captchastatus').html('<span style="color:#f00;float:left" >Invalid Captcha. </span>');
+		$('#capimage').html(response);
+		$('input[type="submit"]').attr('disabled','disabled');
+		}
+		else
+		{
+		$('#captchastatus').html('');
+		
+			 $('input[type="submit"]').removeAttr('disabled');
+		}
+        });
+	}
+        return false;
+   
+	
+	}); */
+
+
+
+
+
+		
+	  /*$('#uemail').blur(function(){
+    var a = $("#uemail").val();
+	
+    
+    var filter =/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+       // check if email is valid
+    if(filter.test(a)){
+               
+		$url="/froosh/index.php/home/check_usermail";
+        $.post($url, {
+            uemail: $('#uemail').val()
+        }, function(response){
+                
+			if(response=="use")
+		{
+		$('#text').html('<span style="color:#f00;float:left" >Email already in use. </span>');
+		$('input[type="submit"]').attr('disabled','disabled');
+		}
+		else
+		{
+		$('#text').html('<span style="color:#0c0;float:left">Email Available</span>');
+		
+			 $('input[type="submit"]').removeAttr('disabled');
+		}
+        });
+        return false;
+    }
+	
+	});*/
+
+
+
+
+		
+			jQuery("#formID").validationEngine();
+
+			$("#formID").bind("jqv.field.result", function(event, field, errorFound, prompText){ console.log(errorFound) })
 	 $.oauthpopup = function(options)
 	    {
         if (!options || !options.path) {
             throw new Error("options.path must not be empty");
         }
         options = $.extend({
-            windowName: 'ConnectWithOAuth' 
+            windowName: 'ConnectWithOAuth' // should not include space for IE
           , windowOptions: 'location=0,status=0,width=800,height=400'
           , callback: function(){ window.location.reload(); }
         }, options);
@@ -91,6 +217,7 @@
         }, 1000);
  	   };
  
+ 	   //bind to element and pop oauth when clicked
 	    $.fn.oauthpopup = function(options) {
 	        $this = $(this);
         	$this.click($.oauthpopup.bind(this, options));
@@ -105,9 +232,37 @@
   $('#'+id).fadeIn();
 } 
 
+	function connect_tw()
+	{	
+	     $.oauthpopup({
+          path: 'http://rhytha.info/froosh/auth/session/twitter',
+          callback: function(){
+           //window.location = '';
+		   }        
+	    });
+	}
+
+	function connect_fb()
+	{	
+	     $.oauthpopup({
+          path: 'http://rhytha.info/froosh/index.php/auth/session/facebook',
+          callback: function(){
+           //window.location = '';
+		   }        
+	    });
+	}
+	function connect_ig()
+	{	
+	     $.oauthpopup({
+          path: 'http://rhytha.info/froosh/auth/session/instagram',
+          callback: function(){
+           //window.location = '';
+		   }        
+	    });
+	}
 	function updateValue(id, value) 
 	{ 
-
+	    // this gets called from the popup window and updates the field with a new value 
 	    document.getElementById(id).value = value; 
 		x="#"+id;
 		if(id=="uname")
@@ -116,6 +271,7 @@
 	} 
 	function updateview() 
 	{ 
+	    // this gets called from the popup window and updates the field with a new value 
 	    window.location.href = "<?php echo $this->config->item('base_url'); ?>home/mview";
 	} 
 		function goBack() {
@@ -123,21 +279,71 @@
 }
 	</script>
 </head>
-<body id="top">
+<!--<body>
+
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top">Start Bootstrap</a>
+            </li>
+            <li>
+                <a href="#top">Home</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#services">Services</a>
+            </li>
+            <li>
+                <a href="#portfolio">Portfolio</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+     Header 
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Welcome to Froosh</h1>
+          
+            <br>
+            <div class="row">
+            <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+            
+            <div  style="min-height: 20px;padding: 19px;margin-bottom: 20px;background-color: #f5f5f5;border: 1px solid #e3e3e3;border-radius: 4px;" class="col-lg-10 col-lg-
+
+offset-1 text-center">
+            <div class="alert alert-info">
+               Welcome to Profile Modification <?php if(isset($user['mode']) &&  strtolower($user['mode'])=="mobile")echo "(".$user['mode'].")";?>
+            </div>-->
+
+   <body id="top">
 
 <div id="wrapper">
 
+    <!-- start : header -->
     <div id="header">
         <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
         <div class="accountArea">
+            <!--<div class="account_btn blockLink pie"><a href="<?php echo $this->config->item('base_url'); ?>home/profile_edit"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>-->
         </div>
     </div>
+    <!-- end : header -->
     
+    <!-- start : main -->
     <div id="main">
     
+        <!-- start : タイトル -->
         <div class="titleGroup">
             <h1 class="title_text bold">アカウントの編集</h1>
         </div>
+        <!-- end : タイトル -->
+
 
 	<form accept-charset="utf-8" id="formID" method="post" action="<?php echo $this->config->item('base_url');?>home/profile_modify" name="formID" class="form-horizontal">
             
@@ -157,7 +363,25 @@
               <input type="password" name="newpassword2" id="newpassword2" value="<?php if(isset($user['upassword']))echo $user['upassword'];?>" placeholder="パスワード" class="validate[equals[upassword]] text-input form-control ipt_l" style="color: #a7a7a7;">
         </div>
         
-        <hr>
+
+<!--           <span style="float:left;"> <input type="radio" class="validate[required] radio" name="ugender" value="1" <?php if(isset($user['ugender']) && ($user['ugender']=="Male" || $user['ugender']=="マレ"))echo "checked";?>></span><span style="float:left; margin-left:10px;">マレ</span>
+		   <span style="float:left; margin-left:10px;"> <input type="radio" class="validate[required] radio" name="ugender" value="2" <?php if(isset($user['ugender']) && ($user['ugender'])=="Female" || $user['ugender']=="女性") echo "checked";?>></span><span style="float:left; margin-left:10px;"> 女性</span> 
+		    </div>
+                   </div>
+ <div class="clearfix"></div><br>
+
+<div class="input-group date" id='datetimepicker5'>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+	<input type=text name="ubdate" id="ubdate" class="validate[custom[date]] form-control" placeholder="生年月日" value="<?php if(isset($user['ubdate']))echo $user
+
+['ubdate'];?>"> <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+					</span></div>
+                    <div class="clearfix"></div><div id="text4" style="padding-bottom: 5px;padding-top: 5px;"></div><br>-->
+
+
+<!--start-->
+
+         <hr>
             <div class="box">
                 
                 <p class="bold">名前（本名）</p>
@@ -170,6 +394,13 @@
                 <label for="woman">
                    <input type="radio" class="validate[required] radio" name="ugender" value="2" <?php if(isset($user['ugender']) && ($user['ugender']=="Female" || $user['ugender']=="女性" || $user['ugender']== 2))echo "checked";?>>&nbsp;女性 
                 </label>
+
+
+
+<!--End-->
+
+
+<!--start-->
                 <?php 
                     if(isset($user['ubdate']))
                     {
@@ -327,6 +558,9 @@
                             </select>
                             </div>
 
+<!--End-->
+<!--<div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>-->
         <p class="bold">住所</p>
                 <div class="select_addr">
                     <?php 
@@ -380,13 +614,29 @@
                                             $dd_name = "uprefecture";
                  echo form_dropdown($dd_name, $dd_list,  ( !empty($user['uprefecture'])  ? $user['uprefecture'] : "" ) ,'class="addrSelect" id="uprefecture"');   ?>
                 </div>
+<!-- </div>
+                    <div class="clearfix"></div><div id="text5" style="padding-bottom: 5px;padding-top: 5px;"></div><br>-->
 
+<!--<div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+	<input type=text name="ucity" id="ucity" class="form-control" placeholder="市の名前" value="<?php if(isset($user['ucity']))echo $user['ucity'];?>"> </div>
+                    <div class="clearfix"></div><div id="text6" style="padding-bottom: 5px;padding-top: 5px;"></div><br>
+ 
+<br>-->
+
+            <!--<p class="bold">市の名前</p>-->
                 <input type="text" name="ucity" id="ucity" class="form-control" value="<?php if(isset($user['ucity']))echo $user['ucity'];?>" onFocus="HideFormGuide(this,'例）新宿区新宿XXX-X 9F');" style="color: #a7a7a7;">
 
+<!--
+                    <div class="clearfix"></div><br>-->
+<!--                   <p class="center col-md-15">-->
                         <input type=hidden name="umode" id="umode" value="<?php if(isset($user['mode']))echo $user['mode']; else echo "mail"?>">
                         <input type=hidden name="uid" id="uid" value="<?php if(isset($user['uid']))echo $user['uid'];?>">
                         <input type=hidden name="umedia" id="umedia" value="<?php if(isset($umedia))echo $umedia; else echo "Mobile"?>"><br>
             
+<!--                        <input type=submit value="Save" id="subutton" class="btn btn-primary">
+                        <input type="button" value="Back" id="subutton" class="btn btn-primary" onclick="goBack()">-->
+                        
                         
                         <div class="input_btn">
 				<input type="button" value="戻る" id="subutton2"  onclick="goBack()" class="btn_back">&nbsp;
@@ -397,11 +647,16 @@
 
 	</form>
 </div>
+    <!-- end : main -->
     
+    <!-- start : footer -->
     <div id="footer">
         <address>XrossFace Holdings Co., LTD.</address>
     </div>
+    <!-- end : footer -->
 </div>
+<!-- / .wrapper -->
+
 </body>
 </html>
 

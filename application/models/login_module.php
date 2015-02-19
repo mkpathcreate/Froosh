@@ -23,7 +23,7 @@ class login_module extends CI_Model {
             $this->db->where('upassword',  md5($password));
             $this->db->where('status >=',2);
             $this->db->limit(1);
-            //get query and processing
+           
             $query = $this->db->get();
             if($query->num_rows() == 1) 
             {

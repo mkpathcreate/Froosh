@@ -17,7 +17,7 @@ class Home extends CI_Controller {
 	 
 	public function index()
 	{
-		
+
 		$this->mail();
 	
 		
@@ -40,11 +40,11 @@ class Home extends CI_Controller {
 		 
 		 
 		 $data['lib_recaptcha']="f1234";
-	
+		
 
                     $data['page'] = 'home/mail';
       
-      		/* Store the captcha value (or 'word') in a session to retrieve later */
+      		
 		$this->session->set_userdata('captchaWord', $captcha['word']);
 	        $data['image']=$captcha['image'];
 
@@ -62,7 +62,7 @@ class Home extends CI_Controller {
 		
 	}
 	
-	//Mail user Registration
+	
 	public function register()
 	{
 	
@@ -75,7 +75,7 @@ class Home extends CI_Controller {
 			 if($this->recaptcha->getIsValid())
 		{
 	
-     		
+      
 	
 			$data = $this->input->post();
 			$this->load->model('mail_module');
@@ -98,7 +98,7 @@ class Home extends CI_Controller {
 		
 						$captcha = create_captcha($vals);
 		
-						/* Store the captcha value (or 'word') in a session to retrieve later */
+						
 						$this->session->set_userdata('captchaWord', $captcha['word']);
 						$data['image']=$captcha['image'];
 
@@ -273,7 +273,7 @@ class Home extends CI_Controller {
 		if($r)
 		{
 		  $this->load->library('session');
-		  
+		
 		 $this->session->set_userdata('logged_in', $r);
 		   if(isset($k['remember']))
 			{
@@ -341,7 +341,7 @@ class Home extends CI_Controller {
 	}
 	public function logout()
 	{
-	 //remove all session data
+	
          $this->session->unset_userdata('logged_in');
 	 $this->session->unset_userdata('image_det');
          $this->session->sess_destroy();
@@ -370,10 +370,10 @@ class Home extends CI_Controller {
 	$this->load->model('mail_module');
 	$return_value =$this->mail_module->uname_verify();
 	if(!$return_value)
-    
+   
 	echo "use";
     else
-   
+  
 	echo "available";
 	}
 
@@ -417,7 +417,7 @@ class Home extends CI_Controller {
 			$captcha = create_captcha($vals);
 			$this->session->set_userdata('captchaWord', $captcha['word']);
 			return $captcha['image'];
-			
+			//return "hai";
 
 		}
        function check_captcha()

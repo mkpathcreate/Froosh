@@ -122,7 +122,7 @@ public function upload()
 		
 		foreach($_FILES as $field => $file)
             	{
-                
+               
                 if($file['error'] == 0)
                 {
 					if ( $this->upload->do_upload($field)) {
@@ -173,7 +173,7 @@ public function upload()
 			$tf=$this->config->item('totflv');
 			if($out['image_sequence']==$tf)
 			{
-			
+		
 			$this->session->set_userdata('image_det',$tf);
 			$butstatus=2;
 			}
@@ -187,7 +187,8 @@ public function upload()
 		echo $s;
 		
 		
-	
+		
+		
 		
 		
 	}

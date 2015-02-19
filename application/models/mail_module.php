@@ -1,10 +1,10 @@
-﻿<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 class mail_module extends CI_Model{
       /* Check the User details and store the User Information in database
      */
     function umregister($udata)
 	{
-
+	//$query = $this->db->get_where('users',array('uemail'=>$udata['uemail']));
 	$query = $this->db->get_where('users',array('uname'=>$udata['uname']));
 	
 	if($query->num_rows()==0){
@@ -17,7 +17,6 @@ class mail_module extends CI_Model{
 	}
 	elseif($udata['ugender']==2)
 	{
-
 	$sex="女性";
 	}
 	 $ubdate=$udata['ubyear']."-".$udata['ubmonth']."-".$udata['ubday'];
@@ -102,7 +101,7 @@ class mail_module extends CI_Model{
 		$this->db->where('uid',$uid);
 		$query=$this->db->get();
 	
-
+		
 		 if($query->num_rows()>0)
 		{
 	 
@@ -110,7 +109,7 @@ class mail_module extends CI_Model{
 			 $sess_array = array('uid' => $results[0]['uid'],
 			                 'uname' => $results[0]['uname'],
 					 'uemail'=>$results[0]['uemail']);
-		
+			
 	  
 	  		
 	  
@@ -200,42 +199,67 @@ class mail_module extends CI_Model{
 
 	$to  = $to;
 
-  //mail from name
+  
   $from_name = "froosh キャンペーン運営事務局";
   $from_name = mb_encode_mimeheader($from_name, "ISO-2022-JP", "ASCII,JIS,UTF-8,EUC-JP,SJIS");
 
-  //mail subject to user
-  $subject = "froosh キャンペーン 事前登録のお知らせ";
+  
+  $subject = "froosh キャンペーンへのご登録ありがとうございます";
 
 	$message = "
-この度は、「frooshを飲んで北欧へ行こう」キャンペーンに
-事前登録して頂き、誠にありがとうございます。
+この度は、
+「frooshを飲んで北欧へ行こう」キャンペーンに
+ご登録頂き、誠にありがとうございます。
 
-事前登録された方に抽選で50名に当社が選んだ
-リサラーソンのマグカップをプレゼントいたします。
-厳正な抽選の結果、当選者の方には、ご登録頂いたメールアドレス宛に
-メールをお送り致します（2015年1月末を予定）。
+本キャンペーンでは、２つのキャンペーンをご用意しています。
 
-また、「frooshを飲んで北欧へ行こう」キャンペーンは、
-11月中旬以降の開始を予定しております。
+ご購入いただき、お飲みになる時に写真を撮影して、ご応募下さい
 
-キャンペーンを開始しましたら、ご登録頂きましたメールアドレスに
-ご案内をお送り致します。
+【北欧往復チケット賞】４種類（4枚）の投稿で応募ができます。
+　抽選で５名様（５名１０名様）に北欧への航空券をペアでプレゼント
+　※＜東京～フィンランド・ヘルシンキ＞往復（エコノミークラス）
+　※渡航時期、航空会社（日本航空もしくはフィンエアー）は、
+　　弊社指定になります。
+
+【参加賞】１種類（１枚）投稿で応募ができます。
+　抽選で５０名様にリサ･ラーソンの置物をプレゼント
+
+
+一人のお客様が何回応募してもOKです。奮ってご応募下さい！
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+　ご　応　募　方　法
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+１．こちらからご登録のメールアドレスとパスワードでログインして下さい。
+　　http://www.froosh-cp.jp/home/login/
+２．『＋マーク』のある画像をクリックすると投稿画面が表示されます。
+３．表示された画面をクリックし、撮影した画像を選んでください
+４．撮影した画像のfrooshフレーバーを選択し、
+　　『写真をアップロードする』ボタンをクリックしてください。
+
+５．応募してよろしければ、『応募する』ボタンをクリックして完了です。
+　
+　＜ご注意事項＞
+　・１回の応募で同じフレーバーを複数選択すると『参加賞』でのご応募になります。
+　・応募するボタンをクリックせずに画面を閉じるとやり直しになります。
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 皆さまの今後のライフスタイルの中に、
 ともにfrooshスムージーがあること、心より願っております。
 
-frooshキャンペーン運営事務局
-
+　　　　　　　　　　　　　　　　　　　　frooshキャンペーン運営事務局
 
 ＜今後の主な販売先のご紹介＞
 ナチュラルローソン他、主なコンビニ、高級スーパー、
 セレクトショップ、楽天市場などで販売されます。
 
-運営会社　:　クロスフェイスHD株式会社
-キャンペーンサイト　:　http://www.froosh-cp.jp/
+＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋
+【運営会社】クロスフェイスHD株式会社　info@froosh-cp.jp
+
+キャンペーンサイト　:　http://www.froosh-cp.jp/ 
 Facebookサイト　:　 https://www.facebook.com/frooshjapan
-問合せ先（メールアドレス）　:　info@froosh-cp.jp";
+＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋
+
+";
 
 
 //mail to admin
@@ -271,7 +295,7 @@ function userimages($uid)
 	 $this->db->from('images');
 	 $this->db->where('u_id',$uid);
 	$this->db->where('image_status',1);
-	 
+	
 	$this->db->order_by("phase asc,image_sequence asc");  
 	$result=$this->db->get();
 	if($result->num_rows()>0)
@@ -327,7 +351,7 @@ function getuid($uname)
 	        $this->db->from('images');
 		$this->db->where('u_id',$uid);
 		$this->db->where('image_status',1);
-
+	
 		$this->db->order_by("image_up_date desc"); 
 		$res=$this->db->get();
 		if($res->num_rows()>0)

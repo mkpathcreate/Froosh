@@ -9,24 +9,19 @@
 
     <title>Welcome to Froosh</title>
 
-  
     <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/bootstrap-social.css" rel="stylesheet">
     
 
-
     <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/stylish-portfolio.css" rel="stylesheet">
-
 
     <link href="assets/assets2/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-   
 
 </head>
 
 <body>
-
 
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
@@ -50,7 +45,6 @@
         </ul>
     </nav>
 
- 
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h1>Welcome to Froosh</h1>
@@ -88,7 +82,6 @@
     
    
 
-
     <footer>
         <div class="container">
             <div class="row">
@@ -124,15 +117,13 @@
         </div>
     </footer>
 
-
 	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery-1.8.2.min.js" type="text/javascript">
 
-
+    <!-- Bootstrap Core JavaScript 
+    <script src="<?php //echo $this->config->item('base_url'); ?>/files/files/js/bootstrap.min.js"></script> -->
 <script src="<?php echo $this->config->item('base_url'); ?>assets/assets2/js/bootstrap.min.js"></script>
 
-
     <script>
-
     $("#menu-close").click(function(e) {
         e.preventDefault();
         $("#sidebar-wrapper").toggleClass("active");
@@ -143,7 +134,6 @@
         $("#sidebar-wrapper").toggleClass("active");
     });
 
-  
     $(function() {
         $('a[href*=#]:not([href=#])').click(function() {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
@@ -159,7 +149,6 @@
             }
         });
 
-
 	$("#formID").bind("jqv.field.result", function(event, field, errorFound, prompText){ console.log(errorFound) })
 	 $.oauthpopup = function(options)
 	    {
@@ -167,7 +156,7 @@
             throw new Error("options.path must not be empty");
         }
         options = $.extend({
-            windowName: 'ConnectWithOAuth' // should not include space for IE
+            windowName: 'ConnectWithOAuth' 
           , windowOptions: 'location=0,status=0,width=800,height=400'
           , callback: function(){ window.location.reload(); }
         }, options);
@@ -181,28 +170,22 @@
         }, 1000);
  	   };
  
- 
 	    $.fn.oauthpopup = function(options) {
 	        $this = $(this);
         	$this.click($.oauthpopup.bind(this, options));
 	    };
-    
-
-
 
     });
-
 	function finishAjax(id, response){
   $('#'+id).html(unescape(response));
   $('#'+id).fadeIn();
 } 
 
-	function connect_tw()
+	/*function connect_tw()
 	{	
 	     $.oauthpopup({
           path: 'http://rhytha.info/froosh/auth/session/twitter',
           callback: function(){
-           
 		   }        
 	    });
 	}
@@ -212,7 +195,6 @@
 	     $.oauthpopup({
           path: 'http://rhytha.info/froosh/auth/session/facebook',
           callback: function(){
-         
 		   }        
 	    });
 	}
@@ -221,16 +203,13 @@
 	     $.oauthpopup({
           path: 'http://rhytha.info/froosh/auth/session/instagram',
           callback: function(){
-         
-		   }        
+        }        
 	    });
-	}
+	}*/
 	function updateValue(id, value) 
 	{ 
-	  
 	    document.getElementById(id).value = value; 
 	} 
-
     </script>
 
 </body>

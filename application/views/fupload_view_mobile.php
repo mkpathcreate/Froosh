@@ -11,7 +11,7 @@
 
 
 <?php
-$ci = get_instance(); // CI_Loader instance
+$ci = get_instance(); 
 $ci->load->library('user_agent',TRUE);
 ?>
 
@@ -52,7 +52,7 @@ $ci->load->library('user_agent',TRUE);
 $(document).ready(function(){	
  $("img.scale").imageScale();
  $("#iview").hide();
- 
+ $("#sucbut").prop( "href", "#" );
  $.ajax({
 		    url : "<?php echo base_url();?>home/success2",
 		    type: "POST",
@@ -152,7 +152,7 @@ maxFilesize:3,
     submitButton.addEventListener("click", function() {
       v1=$("#seldata").val();
 	if(v1!=0)
-      myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+      myDropzone.processQueue(); 
 	else
 	  alert("イメージとフレーバーを選択");
     });
@@ -161,14 +161,14 @@ maxFilesize:3,
 	v2=$(idClicked).attr('iminfo');
 	v1=$("#seldata").val();
 	
-        formData.append("uid",<?php echo $uid; ?>); // Append all the additional input data of your form here!
+        formData.append("uid",<?php echo $uid; ?>); 
 	if(v2!='')
 	formData.append("imid",v2);
 	formData.append("flavor",v1);
 	
 	},
 	success: function (response) {
-		
+			 $("#sucbut").attr("href","<?php echo site_url('/home/success/'); ?>");
 		var re=response.xhr.responseText;
 		var y=re.split(',');
 		x=y[0];
@@ -253,9 +253,9 @@ $.ajax({
 	$("#seldata").prop("disabled", false);
 	if (typeof(x) != "undefined")
 	   {
-		alert('Image Deleted');
+		alert('画像の削除');
 		t="#img"+x;
-		
+			$("#sucbut").prop( "href", "#" );
 		$(t).attr('src','<?php echo base_url(); ?>assets/img/common/upload_common.png');
 		$(t).attr('flaid',"undefined");
 		$(this).next().hide();	
@@ -263,8 +263,10 @@ $.ajax({
 		}
 		else
 		{
-		alert('Image Deleted');
+		alert('画像の削除');
+		$("#sucbut").prop( "href", "#" );
         	window.location.href ="<?php echo $this->config->item('base_url'); ?>fupload";
+				
 		}
 		
 		$("#seldata").prop("disabled", false);

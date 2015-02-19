@@ -7,15 +7,41 @@
 <meta name="Description" content="">
 <meta name="Keywords" content="">
 <meta name="author" content="">
-<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/default.css" media="screen,print">
+<!--<link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/bootstrap-social.css" rel="stylesheet">-->
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/default.css" media="screen,print">
 <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/common.css" media="screen,print">
 <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/webfont.css">
 <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/form.css">
+<!-- ADDITIONAL  -->
 <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/validationEngine.jquery.css" type="text/css"/>
-<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery-1.8.2.min.js" type="text/javascript"></script>  
-<script src="<?php echo $this->config->item('base_url'); ?>assets/js/languages/jquery.validationEngine-ja.js" type="text/javascript" charset="utf-8">	</script>
-<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>	
-<script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/common.js"></script>
+<!--<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/template.css" type="text/css"/>-->
+
+    <!-- Custom CSS
+    <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/css/stylish-portfolio.css" rel="stylesheet"> -->
+
+    <!-- Custom Fonts 
+    <link href="<?php echo $this->config->item('base_url'); ?>assets/assets2/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	
+	
+	
+	<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/validationEngine.jquery.css" type="text/css"/>
+	<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/template.css" type="text/css"/>
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery-1.8.2.min.js" type="text/javascript">
+	</script>  
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/languages/jquery.validationEngine-ja.js" type="text/javascript" charset="utf-8">
+	</script>
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
+	</script>-->
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery-1.8.2.min.js" type="text/javascript">
+	</script>  
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/languages/jquery.validationEngine-ja.js" type="text/javascript" charset="utf-8">
+	</script>
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
+	</script>	
+	
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/common.js"></script>
 	
 <script type="text/javascript">
 		jQuery(document).ready(function(){
@@ -31,7 +57,7 @@ $("#loginf").bind("jqv.field.result", function(event, field, errorFound, prompTe
             throw new Error("options.path must not be empty");
         }
         options = $.extend({
-            windowName: 'ConnectWithOAuth' 
+            windowName: 'ConnectWithOAuth' // should not include space for IE
           , windowOptions: 'location=0,status=0,width=800,height=400'
           , callback: function(){ window.location.reload(); }
         }, options);
@@ -44,7 +70,8 @@ $("#loginf").bind("jqv.field.result", function(event, field, errorFound, prompTe
             }
         }, 1000);
  	   };
-
+ 
+ 	   //bind to element and pop oauth when clicked
 	    $.fn.oauthpopup = function(options) {
 	        $this = $(this);
         	$this.click($.oauthpopup.bind(this, options));
@@ -92,11 +119,16 @@ function connect_tw()
 		}
 	function updateValue(id, value) 
 	{ 
+	    // this gets called from the popup window and updates the field with a new value 
 	    document.getElementById(id).value = value; 
-            x="#"+id;
+		x="#"+id;
+		//if(id=="uname")
+		//$(x).attr('readonly', true);
+		
 	} 
 	function updateview() 
 	{ 
+	    // this gets called from the popup window and updates the field with a new value 
 	    window.location.href = "<?php echo $this->config->item('base_url'); ?>home/mview";
 	} 
 	function forgot()
@@ -112,6 +144,7 @@ function connect_tw()
         }, function(response){
                 
 			if(response=="success")
+			//if(response>1)
 		{
 			alert("Password sent to your Email ID");
 		}
@@ -138,51 +171,61 @@ function connect_tw()
 	}
 
 	}
-</script>
+			</script>
 </head>
 <body id="top">
 <div id="wrapper">
     <div id="head_tag">
-     
+        <!--<img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/tag.png" alt="froosh">-->
     </div>
-
+	    <!-- start : header -->
     <div id="header">
         <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
         <div class="accountArea">
-       
+            <!--<div class="account_btn blockLink pie"><a href="#"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>-->
         </div>
     </div>
+    <!-- end : header -->
 
     <hr class="mt0">
     
-
+    <!-- start : main -->
     <div id="main">
-            <form method="post" action="<?php echo $this->config->item('base_url'); ?>home/login_user" id="loginf" name="loginf">
-            <div class="box">
-            <div id="na"><?php if(isset($error)){ echo '<span style="color:#f00;">'.$error.'</span>';  $error="";} ?></div>
-            <p class="bold">メールアドレス</p>
-            <input type="text" name="uemail" id="uemail" value="" class="validate[required,minSize[4],custom[email]] ipt_l" onFocus="HideFormGuide(this,'taro@froosh.com');"  placeholder="taro@froosh.com" style="color: #a7a7a7;">
+		<form method="post" action="<?php echo $this->config->item('base_url'); ?>home/login_user" id="loginf" name="loginf">
+			<div class="box">
+			<div id="na"><?php if(isset($error)){ echo '<span style="color:#f00;">'.$error.'</span>';  $error="";} ?></div>
+                        <p class="bold">メールアドレス</p>
+                        <input type="text" name="uemail" id="uemail" value="" class="validate[required,minSize[4],custom[email]] ipt_l" onFocus="HideFormGuide(this,'taro@froosh.com');"  placeholder="taro@froosh.com" style="color: #a7a7a7;">
 
-            <p class="bold">パスワード</p>
-            <input type="password" name="upass" id="upass" value="" class="validate[required,minSize[6]] ipt_l" onFocus="HideFormGuide(this,'*******');" placeholder="*****"  style="color: #a7a7a7;">
-        	<div class="input_btn">
-			<input type="submit" value="ログイン" class="btn_login pie"><br>
-                </div>
-            </div>
-            </form>
-            <hr class="light mb30">
-            <div class="facebook"><a href="http://test.froosh-cp.jp/index.php/auth/session/facebook">
+                       <p class="bold">パスワード</p>
+                       <input type="password" name="upass" id="upass" value="" class="validate[required,minSize[6]] ipt_l" onFocus="HideFormGuide(this,'*******');" placeholder="*****"  style="color: #a7a7a7;">
+
+<!--                        <label for="remember_me">
+                            <input type="checkbox" id="remember" name="remember"  class="ml5"><span class="remind_pass_text">&nbsp;パスワードを記憶する</span>
+                	</label>			-->
+	<div class="input_btn">
+				<input type="submit" value="ログイン" class="btn_login pie"><br>
+				<!--<input type="button" value="Forgot your password?" onClick="forgot()"><br>-->
+			</div>
+			</div>
+		</form>
+		 <hr class="light mb30">
+		 <div class="facebook"><a href="http://test.froosh-cp.jp/index.php/auth/session/facebook">
             <img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/facebook.png" alt="Facebook経由でログイン"></a></div>
-            <div class="twitter">
-            <a  href="http://test.froosh-cp.jp/index.php/auth/session/twitter/" >
+<div class="twitter">
+<a  href="http://test.froosh-cp.jp/index.php/auth/session/twitter/" >
             <img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/twitter.png" alt="Twitter経由でログイン"></a></div>
-            <div class="instagram">
-            <a href="http://test.froosh-cp.jp/index.php/auth/session/instagram"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/instagram.png" alt="instagram経由でログイン"></a></div>
-            </div>
+<div class="instagram">
+<a href="http://test.froosh-cp.jp/index.php/auth/session/instagram"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/instagram.png" alt="instagram経由でログイン"></a></div>
+</div>
+    <!-- end : main -->
     
+    <!-- start : footer -->
     <div id="footer">
         <address>XrossFace Holdings Co., LTD.</address>
     </div>
+    <!-- end : footer -->
 </div>
+<!-- / .wrapper -->
 </body>
 </html>

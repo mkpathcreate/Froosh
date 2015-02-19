@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/css/default.css" media="all">
 
 <?php
-$ci = get_instance(); 
+$ci = get_instance(); // CI_Loader instance
 $ci->load->library('user_agent',TRUE);
 ?>
 	   <?php
@@ -29,9 +29,9 @@ $ci->load->library('user_agent',TRUE);
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dropzone.min.js" type="text/javascript"> </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.customSelect.js" type="text/javascript"> </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/boostrapv3/js/bootstrap.min.js" type="text/javascript"> </script>
-
+<!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.alerts.js" type="text/javascript"> </script> -->
 <link href="<?php echo base_url(); ?>assets/js/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
+<!--<link href="<?php echo base_url(); ?>assets/css/jquery.alerts.css" rel="stylesheet" type="text/css"/>-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/js/css/colorbox.css">
 <script src="<?php echo base_url(); ?>assets/js/jquery.colorbox.js"></script>
 
@@ -49,7 +49,10 @@ img0=new Image()
 	img2.src="<?php echo base_url(); ?>assets/img/common/type_img_pbc_pc.png"
 	img3=new Image()
 	img3.src="<?php echo base_url(); ?>assets/img/common/type_img_ocg_pc.png"
-
+	/*
+	img4=new Image()
+	img4.src="img/common/type_img_sbg.png"
+	*/
 	
 	function imgChange(parts){
 	fname=parts.options[parts.selectedIndex].value;
@@ -57,13 +60,12 @@ img0=new Image()
 	if(fname==1){document.imgsmp.src=img1.src;}
 	if(fname==2){document.imgsmp.src=img2.src;}
 	if(fname==3){document.imgsmp.src=img3.src;}
-
+	//if(fname==4){document.imgsmp.src=img4.src;}
 	}
 
 $(document).ready(function(){	
  $("img.scale").imageScale();
  $("#iview").hide();
-$("#sucbut").prop( "href", "#" );
  $.ajax({
 		    url : "<?php echo base_url();?>home/success2",
 		    type: "POST",
@@ -82,9 +84,28 @@ $("#sucbut").prop( "href", "#" );
 			
 		}
 		});
+//$('.typeSelect').customSelect({customClass:'typeSelectCustom'});
 
 
-Dropzone.autoDiscover = false; 
+/*$("#sucbut").on("click",function()
+{
+$("input[value='Delete']").remove();
+});*/
+
+
+/*$.ajax({
+	    url : "/fupload/imgflvdetails3",
+	    type: "POST",
+	    success: function(data, textStatus, jqXHR)
+	    {
+		var res = data;
+		
+		flist=res;
+		
+	    }
+	   }); */
+
+Dropzone.autoDiscover = false; // keep this line if you have multiple dropzones in the same page
 	var idClicked;
        var idClicked2;
         var flaid;
@@ -93,7 +114,7 @@ $('body').click(function(e) {
 var target = $(e.target);
 
 if(target.is("[id^='img']")){
-
+//idClicked="#img1";
 idClicked="#"+e.target.id;
 
 if(typeof $(idClicked).attr('flaid')=='undefined' || $(idClicked).attr('flaid')=='undefined'){
@@ -103,14 +124,18 @@ $('#seldata')
     .append('<option value="1">マンゴー＆オレンジ</option>')
     .append('<option value="2">パイナップル・バナナ＆ココナッツ</option>')
     .append('<option value="3">オレンジ・キャロット＆ジンジャー</option>')
-    
+    //.append('<option value="4">Carrot</option>')
+    //.append('<option value="5">Strawberry</option>')
 ;
 
 $("#seldata").attr("disabled",false);
 for ( i = 1; i <6; i++) {
 $("#seldata option[value='" + i+ "']").attr("disabled", false);
 }
-
+/*p=flist.split(",");
+ for (var i = 0, len = p.length; i < len; i++) {
+$("#seldata option[value='" + p[i]+ "']").attr("disabled", true);
+}*/
 }
 else
 
@@ -121,11 +146,12 @@ flaid=$(idClicked).attr('flaid');
 $('#seldata')
     .empty()
     .append('<option value="0">ブルーベリー＆ラズベリー</option>')
-  
+  //   .append('<option selected="selected" value="0">select</option>')
     .append('<option value="1">マンゴー＆オレンジ</option>')
     .append('<option value="2">パイナップル・バナナ＆ココナッツ</option>')
     .append('<option value="3">オレンジ・キャロット＆ジンジャー</option>')
-  
+   // .append('<option value="4">Carrot</option>')
+   // .append('<option value="5">Strawberry</option>')
 ;
 
 $("#seldata option[value='" + flaid + "']").attr("selected", true);
@@ -144,13 +170,13 @@ $('select').on('change', function() {
   
   
   out="<input type=checkbox id="+x[0].text+" name="+x[0].value+">"+x[0].value+"<br><input type=checkbox id="+x[1].value+" name="+x[1].value+">"+x[1].value+"<br><input type=checkbox id="+x[2].value+" name="+x[2].value+">"+x[2].value;
- 
+ // $('#remfl').html(out);
   
 });
 
-
+//Dropzone.options.myDropzone = {
 $(".uploadform").dropzone({	
-
+//enqueueForUpload: true,
 autoProcessQueue:false,
 maxFiles: 1,
 acceptedFiles:"image/jpeg,image/png",
@@ -171,7 +197,7 @@ maxFilesize:3,
     submitButton.addEventListener("click", function() {
       v1=$("#seldata").val();
 	if(v1!=0)
-      myDropzone.processQueue(); 
+      myDropzone.processQueue(); // Tell Dropzone to process all queued files.
 	else
 	  alert("イメージとフレーバーを選択");
     });
@@ -179,16 +205,16 @@ maxFilesize:3,
 	sending:function(file, xhr, formData) {
 	v2=$(idClicked).attr('iminfo');
 	v1=$("#seldata").val();
-	
-    formData.append("uid",<?php echo $uid; ?>); 
+	//$(idClicked).attr('selflv',v1);
+    formData.append("uid",<?php echo $uid; ?>); // Append all the additional input data of your form here!
 	if(v2!='')
 	formData.append("imid",v2);
 	formData.append("flavor",v1);
-	
+	console.log(v1);
 	
 	},
 	success: function (response) {
-		 $("#sucbut").attr("href","<?php echo site_url('/home/success/'); ?>");
+		//var x = JSON.parse(response.xhr.responseText);
 		var re=response.xhr.responseText;
 		//x = x.replace(/.*?:/g, "");
 		var y=re.split(',');
@@ -196,13 +222,13 @@ maxFilesize:3,
 		iid=y[1];
 		$('.icon').hide();
 		$('#uploader').modal('hide');
-		
+		//$(idClicked).attr('src',"<?php echo base_url()."uploads/"; ?>"+x.img);
 		$(idClicked).attr('src',x);
 		$(idClicked).attr('iminfo',x.iid);
-		
+		//$(idClicked).parent().prepend('<input type="button" value="Delete" onclick="iminfo(event,'+x.iid+');">');
 		$(idClicked).parent().prepend('<div class="remove bg_fit" onclick="iminfo(event,'+iid+');"></div>');
 		$(idClicked).attr('flaid',x.fname);
-		
+		//$(idClicked).attr('id',"img"+x.iid);
 		$(idClicked).attr('id',"img"+iid);
 		idClicked2="#img"+x.iid;
 		flist=x.flvdet;
@@ -255,7 +281,7 @@ maxFilesize:3,
 	//};
 });	
 
-
+//if($(".dz-clickable").length!=0)
 $("form#myDropzone .dz-clickable").trigger('click');
 });
 
@@ -272,24 +298,28 @@ $.ajax({
     {
 	
 	
+	//    jAlert('Confirmed: ' + r, 'Confirmation Results');
+
+	//        alert("Image Deleted");
 	
 	$("#seldata").prop("disabled", false);
 	if (typeof(x) != "undefined")
 	   {
-		alert('画像の削除');
+		alert('Image Deleted');
 		t="#img"+x;
-			$("#sucbut").prop( "href", "#" );
-		$(t).attr('src','<?php echo base_url(); ?>assets/img/common/upload_common.png');
+		
+		$(t).attr('src','<?php echo base_url(); ?>assets/img/common/upload_01.png');
 		$(t).attr('flaid',"undefined");
 		$(this).next().hide();	
 		$(event.target).hide();
 		}
 		else
 		{
-		alert('画像の削除');
-		$("#sucbut").prop( "href", "#" );
+		alert('Image Deleted');
+		//location.reload();
 		}
-		
+		//$(idClicked).attr("id",idClicked2);
+		//$(idClicked2).attr('flaid',"undefined");
 		$("#seldata").prop("disabled", false);
 		
 	$.ajax({
@@ -313,7 +343,7 @@ $.ajax({
 			imlist2=JSON.parse(data);
 			fresult="";
 			for (i = 0, len = imlist2.length; i < len; i++) {
-			
+			//fresult+=imlist2[i]['idate']+"     "+imlist2[i]['fname']+"<br>";
 			if(i==0)
 			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
 			else
@@ -358,7 +388,7 @@ $.ajax({
      <div id="head_tag">
         <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/tag.png" alt="froosh">
     </div>
-
+    <!-- start : header -->
 		
 		
     <div id="header">
@@ -371,21 +401,23 @@ $.ajax({
 			 </div>
     </div>
 		<?php } ?>
-
+    <!-- end : header -->
+    
+    <!-- start : main -->
 	<?php
 		if ($ci->agent->is_mobile())
 		{
 		?>
 		    <div id="main">
     
-   
+        <!-- start : タイトル -->
         <div class="titleGroup">
             <h1 class="title_text">frooshを飲んで北欧に行こう<br>キャンペーン応募ページ</h1>
             <p class="notice fs14">応募期間：2015年3月31日まで</p>
         </div>
-     
+        <!-- end : タイトル -->
         
-      
+        <!-- start : 写真投稿 -->
         <h2 class="title_upload">写真投稿</h2>
         <div class="box">
             <p class="idt_1">※1枚投稿で<span class="notice">「参加賞(リサ･ラーソンの置物)」</span>への応募が完了し、4枚投稿で<span class="notice">「北欧往復チケット賞」</span>へ応募ができます。</p>
@@ -394,12 +426,14 @@ $.ajax({
 		
     <div id="main">
     
-       
+        <!-- start : ???? -->
         <div class="titleGroup">
             <h1 class="title_text">froosh(フルーシュ)を飲んで北欧に行こう<br>キャンペーン応募ページ</h1>
             <p class="period">応募期間：2015年3月31日まで</p>
         </div>
-       
+        <!-- end : ???? -->
+                
+        <!-- start : ???? -->
 		<div class="uplad_titleArea">
             <h2 class="title">写真投稿</h2>
             <div class="text">
@@ -407,7 +441,7 @@ $.ajax({
             </div>
         </div>
 		
-
+<!--<div class="container" style="width:1029px;">-->
 
 	
                     
@@ -450,30 +484,36 @@ echo 0; ?>  /> </div></div><?php } }?>
 				
 				<div class="upload">
 				
-	<div  id="buploader2" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img2" src="<?php echo base_url(); ?>assets/img/common/upload_common.png"  height=206 width=200  /> </div>
+	<div  id="buploader2" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img2" src="<?php echo base_url(); ?>assets/img/common/upload_01.png"  height=206 width=200  /> </div>
 	</div>
 	<div class="upload">
-	<div  id="buploader3" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img3" src="<?php echo base_url(); ?>assets/img/common/upload_common.png" height=206 width=200 /> </div>
+	<div  id="buploader3" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img3" src="<?php echo base_url(); ?>assets/img/common/upload_02.png" height=206 width=200 /> </div>
 	</div>
 	<div class="upload">
-	<div  id="buploader4" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img4" src="<?php echo base_url(); ?>assets/img/common/upload_common.png" height=206 width=200  /> </div>
+	<div  id="buploader4" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img4" src="<?php echo base_url(); ?>assets/img/common/upload_03.png" height=206 width=200  /> </div>
 	</div>
 	<div class="upload">
     <div style="display:block;text-align:center">
 	
-	<div  id="buploader5" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img  id="img5" src="<?php echo base_url(); ?>assets/img/common/upload_common.png"  height=206 width=200  /> </div>
+	<div  id="buploader5" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img  id="img5" src="<?php echo base_url(); ?>assets/img/common/upload_04.png"  height=206 width=200  /> </div>
 		</div></div></div></div>
     <div class="btn_apply blockLink pie" style="cursor: pointer;">
-
+  <!--  <img class="img" src="" style="width:350px"> <br/>
+    <img class="thumb" src="" style="width:180px">  -->
     <a href="<?php echo site_url('/home/success/'); ?>" id="sucbut">応募する</a>
            
 	</div>
 	</div>
-
+	<!-- Start Post Attachments -->
                    <div class="modal fade" id="uploader" tabindex="-1" role="dialog" aria-labelledby="updater" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        
+                         <!--<div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">?</button>
+                          <br>
+                          <i class="icon-credit-card icon-7x"></i>
+                          <p class="no-margin">????????1 JPEG???PNG???JPG????????????????????!</p>
+                        </div>-->
                         <div class="modal-body">
                           <form action="" class="uploadform dropzone no-margin dz-clickable" id="myDropzone">   
 									あなたの画像を削除するか、またはここをクリック					  
@@ -482,34 +522,45 @@ echo 0; ?>  /> </div></div><?php } }?>
                           </div>
 						  		  
                           </form>
-				
+						<!--	Choose the Flavor:
+						  <select id="seldata">
+						  <option value="0">Select</option>
+						  <option value="1">Mango</option>
+						  <option value="2">Pineapple</option>
+						  <option value="3">Blueberry</option>
+						  <option value="4">Carrot</option>
+						  <option value="5">Strawberry</option>
+						  </select><br><br><br>-->
 						 
 						  <p style="padding-left:70px">●種類を選んで投稿してください</p>
 				<div class="typeSelectArea pie" style="width:397px;">
 					<div class="type_img"><img src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png" alt="ブルーベリー＆ラズベリー" name="imgsmp"></div>
 						<div class="typeSelectWrap" style="position: relative;width: 382px;">
-							
+							<!-- <select name="focus" id="type" class="typeSelect" onchange="imgChange(this)"> -->
 				<select name="focus" class="typeSelect hasCustomSelect" id="seldata" onchange="imgChange(this)" style="position: absolute;opacity: 0.34
 				;margin-top: 0px;width: 350px;margin-left: 50px;border:0px"> 
 								<option value="0" selected="selected">ブルーベリー＆ラズベリー</option>
 								<option value="1">マンゴー＆オレンジ</option>
 								<option value="2">パイナップル・バナナ＆ココナッツ</option>
 								<option value="3">オレンジ・キャロット＆ジンジャー</option>
-								
+								<!--<option value="4">??????�???&???</option>-->
 							</select>
-	
+		<!--					<span class="typeSelectCustom typeSelect" style="display: inline-block;">
+			
+<span class="typeSelectCustomInner" style="width: 370px; display: inline-block;">マンゴー＆オレンジ</span>
+</span>-->
 						</div>
 				</div>
-				
+				<!-- / ???????????? -->
         
 				<p class="notice fs14 center">※既に登録した種類を再度選択することはできません。</p>
 				
 				<div>
-
+<!--<img style="width:520px;" src="<?php //echo base_url(); ?>assets/images/flavour.jpg">-->
 </div>		 
                          </div>
                           <div class="modal-footer">
-					
+						  <!-- btn btn-default attachtopost-->
 						  <center>
 						  <button type="button" class="btn_upload pie" id="subbuttimg">写真を投稿する</button>
 						  <?php
@@ -524,11 +575,12 @@ echo 0; ?>  /> </div></div><?php } }?>
 						  </center>
                         </div>
                       </div>
-                      
+                      <!-- /.modal-content -->
                     </div>
-                   
+                    <!-- /.modal-dialog -->
                   </div>
-           
+                  <!-- /.modal -->
+  <!-- End Post Attachments -->
   
   <!--<a href="<?php echo site_url('home/logout'); ?>">logout</a>
 <a href="<?php echo site_url('home/profile_edit'); ?>">Edit Profile</a>-->
@@ -536,7 +588,7 @@ echo 0; ?>  /> </div></div><?php } }?>
 	
  <hr>
         
-   
+        <!-- start : ???? -->
         <h2 class="title_02">応募方法</h2>
         <div class="stepArea">
             <div class="step_wrap">
@@ -571,7 +623,10 @@ echo 0; ?>  /> </div></div><?php } }?>
                 </div>
             </div>
         </div>
-      
+        <!-- / .stepArea -->
+        <!-- end : ???? -->
+        
+        <!-- start : ???? -->
         <div class="box pb0">
             <div class="tgl_btn pie">
                 <h2 class="tgl_text">利用規約</h2>
@@ -670,7 +725,10 @@ echo 0; ?>  /> </div></div><?php } }?>
                 <p class="right mt10">以上</p>
             </div>
         </div>
+        <!-- / .box -->
+        <!-- end : ???? -->
 
+        <!-- start : ????????? -->
         <div class="box pb0">
              <div class="tgl_btn">
                 <h2 class="tgl_text">個人情報の取り扱い</h2>
@@ -784,25 +842,52 @@ echo 0; ?>  /> </div></div><?php } }?>
                 <p class="right mt10">2015年1月5日改定</p>
             </div>
         </div>
-    
+        <!-- / .box -->
+        <!-- end : ????????? -->
+
+        <!-- start : ???? -->
         <div class="box pb0">
             <div class="tgl_btn_d_open">
                 <h2 class="tgl_text">活動履歴</h2>
             </div>
             <div class="tgl_cont_d_open mt10" id="userstatus">
-            
+                <!--<dl class="history new">
+                    <dt>2015/02/01</dt>
+                    <dd>??????????!??????????!</dd>
+                </dl>
+                <dl class="history">
+                    <dt>2015/02/01</dt>
+                    <dd>??????????!</dd>
+                </dl>
+                <dl class="history">
+                    <dt>2015/02/01</dt>
+                    <dd>??????????!</dd>
+                </dl>-->
             </div>
         </div>
-      
+        <!-- / .box -->
+        <!-- end : ???? -->
 
 <center><a href="<?php echo site_url('/home/success/'); ?>" ><img style="padding-top:50px;display:none" src="<?php echo base_url(); ?>assets/images/button.png" id="sucbut"/></a></center>
+<!--<div id="userstatus" name="userstatus"  style="padding-top:600px;"></div>-->	   
+	
+    <!-- end : main -->
+    
+    <!-- start : footer -->
 	</div>
     <div id="footer">
         <address>XrossFace Holdings Co., LTD.</address>
     </div>
+    <!-- end : footer -->
+	</div>
+	</div>
 
-	</div>
-	</div>
+
+<!-- / .wrapper -->
+
+
+
+
 </body>
 </html>
 

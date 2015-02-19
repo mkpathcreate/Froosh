@@ -15,23 +15,36 @@
 </head>
 <body id="top">
 <div id="wrapper">
- 
+    <!-- start : header -->
     <div id="header">
         <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
+<!--        <div class="accountArea">
+            <div class="account_btn blockLink"><a href="#"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>
+        </div>-->
+    </div>
+    <!-- end : header -->
     <hr class="mt0">
     
-
+    <!-- start : main -->
     <div id="main">
+        
+        <!-- start : ログアウトしました -->
         <div class="box logout_page">
             <p class="logout_message">ログアウトしました</p>
             <p class="btn_r_arrow mb20"><a href="<?php echo site_url('home/login');?>"><span>再度ログインする</span></a></p>
             <p class="btn_r_arrow"><a href="http://www.froosh-cp.jp"><span>frooshキャンペーンサイトTOPへ</span></a></p>
         </div>
+        <!-- end : ログアウトしました -->
+        
     </div>
-
+    <!-- end : main -->
+    
+    <!-- start : footer -->
     <div id="footer">
         <address>XrossFace Holdings Co., LTD.</address>
     </div>
+    <!-- end : footer -->
 </div>
+<!-- / .wrapper -->
 </body>
 </html>

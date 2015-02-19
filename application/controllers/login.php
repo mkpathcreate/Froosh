@@ -30,12 +30,12 @@ class login extends CI_Controller{
 
         if($this->form_validation->run() == FALSE)
         {
-          //Field validation, User redirected to login page
+          
           $this->load->view('login_admin.php');
         }
         else
         {
-         //  home screen
+        
           redirect('froosh', 'refresh');
         }
     }

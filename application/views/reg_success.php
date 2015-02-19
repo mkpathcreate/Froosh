@@ -21,8 +21,7 @@
 
 </script>
     <div id="wrap">
-      <!--
-    <img src="<?php echo $this->config->item('base_url'); ?>assets/img/froosh_form_fin.png" alt="" width="700" height="900" border="0" usemap="#Map">-->
+
     <map name="Map">
       <area shape="rect" coords="221,297,466,346" href="https://www.facebook.com/frooshjapan" alt="froosh Japan　Facebookページ">
     </map>
