@@ -3,7 +3,7 @@
 /* --------------------------------------------------
 reset
 -------------------------------------------------- */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body,div,dl,dt,dd,ul,ol,li,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
 fieldset,img {border:0;}
 address,caption,cite,code,dfn,th,var { font-style:normal; font-weight:normal; }
 caption,th { text-align:left; }
@@ -306,3 +306,8 @@ hr.light{
     border-width: 1px 0 0 0;
     height: 1px;
 }
+
+.recaptchatable a {display: none;}
+.recaptchatable a:hover {display: none;}
+.recaptchatable_logo{display: none;}
+.recaptcha_only_if_privacy{display: none;}

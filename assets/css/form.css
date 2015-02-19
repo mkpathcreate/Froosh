@@ -104,7 +104,7 @@ textarea {
     box-sizing: border-box;
     text-align: center;
     text-align: -webkit-center;
-    background: url(../img/common/arrow_down.png) right center no-repeat;
+   background: url(../img/common/arrow_down.png) right center no-repeat;
 }
 
 .birthSelect_bg{
@@ -153,7 +153,7 @@ textarea {
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    background: url(../img/common/arrow_down.png) right center no-repeat;
+   background: url(../img/common/arrow_down.png) right center no-repeat;
 }
 
 .addrSelect_bg{
@@ -161,7 +161,7 @@ textarea {
     float: left;
     width: 148px;
     margin: 0 10px 10px 0;
-    border: 1px solid #959595;
+  border: 1px solid #959595;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
