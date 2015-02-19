@@ -1,0 +1,907 @@
+@charset "utf-8";
+
+/* --------------------------------------------------
+ layout
+-------------------------------------------------- */
+
+/* body 
+----------------------------*/
+html {
+    -webkit-text-size-adjust: 100%
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0 0 0 0;
+}
+
+* html body {
+    position: relative;
+    overflow: hidden;
+}
+
+#wrapper{
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+	
+}
+
+@media only screen and (min-width: 769px) {
+    body{
+        background: #fff;
+    }
+    #wrapper{
+        background: #fff;	
+        -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+}
+@media only screen and (min-width: 0px) and (max-width: 320px) {
+    body{
+        background: #fff;
+    }
+    #wrapper{
+        background: #fff;	
+        -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+#recaptcha_image { width:auto !important; max-width: 100%; height: auto !important}
+#recaptcha_image img { width:100% ;}
+#recaptcha_response_field { width: 100% !important; max-width: 302px; }
+
+/*.recaptchatable, #recaptcha_area tr, #recaptcha_area td, #recaptcha_area th{
+float: left;
+}
+#recaptcha_area tr{
+height: auto !important;
+}
+.recaptcha_image_cell{
+width: 100% !important;
+max-width: 300px;
+img{
+height: auto !important;
+}
+}
+
+#recaptcha_image img{
+height:46px;
+width:120px;
+margin: 0px;
+padding: 0px;
+}
+#recaptcha_container {
+margin: 0px;
+padding: 0px;
+width: 120px;
+}*/
+
+/* header 
+----------------------------*/
+#header{
+    position: relative;
+    height: 70px;
+    padding: 0 15px;
+	_zoom:1; 
+	overflow:hidden;
+	/*width:auto;*/
+}
+
+.logo{
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.accountArea{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.account_btn{
+    min-width: 120px;
+    max-width: 180px;
+    padding: 5px 15px;
+    border: 1px solid #959595;
+	_zoom:1; 
+	overflow:hidden;
+
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    background: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f2f2f2));
+    background: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+    background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    border-radius: 2px 2px 2px 2px;
+}
+
+.account_btn span{
+    vertical-align: middle;
+}
+
+.account_btn span.a_icon{
+    font-size: 18px;
+}
+
+.account_btn span.a_text{
+    display: block;
+    float: left;
+    max-width: 120px;
+    height: 24px;
+    overflow: hidden;
+}
+
+
+/* main 
+----------------------------*/
+#main{
+    padding-bottom: 40px;
+}
+
+#main .inbox{
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* footer 
+----------------------------*/
+#footer {
+    height: 30px;
+    background: url(../img/common/bg_01.png) 0 0 #eee;
+}
+
+#footer address{
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+
+/* --------------------------------------------------
+ title
+-------------------------------------------------- */
+.titleGroup{
+    background: url(../img/common/bg_01.png) 0 0 #eee;
+    padding: 10px 14px;
+    -moz-background-size: 460px auto;
+    -webkit-background-size: 460px auto;
+    background-size: 460px auto;
+}
+
+.titleGroup .title_text{
+    border-left: 4px solid #3b201a;
+    padding: 0 0 0 5px;
+    line-height: 1.25;
+    font-weight: bold;
+}
+
+.titleGroup p{
+    margin: 5px 0 0 10px;
+    line-height: 1;
+}
+
+.title_upload{
+    padding: 10px 14px;
+    font-size: 20px;
+    font-weight: bold;
+    -moz-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #a0a0a0;
+}
+
+.title_02{
+    margin: 20px 0 0 0;
+    padding: 10px 14px;
+    background: url(../img/common/bg_01.png) 0 0 #eee;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing:3px;
+}
+
+
+/* --------------------------------------------------
+ block background and box padding
+-------------------------------------------------- */
+.bg_01{
+    background: url(../img/common/bg_01.png) 0 0 #eee;
+    padding: 10px 14px;
+    -moz-background-size: 460px auto;
+    -webkit-background-size: 460px auto;
+    background-size: 460px auto;
+}
+
+.bg_02{
+    background: url(../img/common/bg_02.png) 0 0 #eee;
+    padding: 10px 14px;
+    -moz-background-size: 460px auto;
+    -webkit-background-size: 460px auto;
+    background-size: 460px auto;
+}
+
+.box{
+    padding: 14px;
+}
+
+/* --------------------------------------------------
+ button
+-------------------------------------------------- */
+.btn_r_arrow{
+    margin: 10px 0;
+    padding: 0 10px;
+    line-height: 1.2;
+    border: 1px solid #959595;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #f2f2f2;
+    background: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f2f2f2));
+    background: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+    background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+}
+
+.btn_r_arrow span{
+    display: block;
+    position: relative;
+    padding: 10px 20px 10px 0;
+}
+
+.btn_r_arrow span:after{
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    margin-top: -5px;
+    border-top: solid 3px #0068b7;
+    border-right: solid 3px #0068b7;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    content: "";
+}
+
+
+
+/* --------------------------------------------------
+ toggle
+-------------------------------------------------- */
+.tgl_btn{
+    padding: 10px;
+    line-height: 1.2;
+    border: 1px solid #959595;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #f2f2f2;
+    background: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f2f2f2));
+    background: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+    background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+}
+
+.tgl_btn .tgl_text{
+    display: block;
+    position: relative;
+    padding-right: 20px;
+}
+.tgl_btn .tgl_text:after{
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    margin-top: -5px;
+    border-top: solid 3px #0068b7;
+    border-right: solid 3px #0068b7;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    content: "";
+}
+
+.tgl_btn.open .tgl_text:after{
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    margin-top: -5px;
+    border-top: solid 3px #0068b7;
+    border-right: solid 3px #0068b7;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    content: "";
+}
+
+.tgl_btn_d_open{
+    padding: 10px;
+    line-height: 1.2;
+    border: 1px solid #959595;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #f2f2f2;
+    background: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f2f2f2));
+    background: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+    background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+}
+
+.tgl_btn_d_open .tgl_text{
+    display: block;
+    position: relative;
+    padding-right: 20px;
+}
+.tgl_btn_d_open .tgl_text:after{
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    margin-top: -5px;
+    border-top: solid 3px #0068b7;
+    border-right: solid 3px #0068b7;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    content: "";
+}
+
+.tgl_btn_d_open.close .tgl_text:after{
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    margin-top: -5px;
+    border-top: solid 3px #0068b7;
+    border-right: solid 3px #0068b7;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    content: "";
+}
+
+
+/* --------------------------------------------------
+ アップロード area elements
+-------------------------------------------------- */
+.uploadArea{
+    position: relative;
+    margin-bottom: 20px;
+	_zoom: 1; 
+	overflow: hidden;
+}
+
+.times{
+    margin: 15px 0;
+    background: url(../img/common/times_bg.png) center center repeat-x;
+}
+
+.times span{
+    background: #3b201a;
+    color: #fff;
+    font-size: 14px;
+    padding: 2px 30px;
+
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.uploadWrap{
+    position: relative;
+    left: 50%;
+    float: left;
+    margin-left: -2%;
+}
+
+.upload{
+    position: relative;
+    left: -50%;
+    float: left;
+    width: 22%;
+    max-width: 212px;
+    margin-left: 3%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.upload .remove{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background: url(../img/common/remove.png) 0 0 no-repeat;
+    -moz-background-size: 24px 24px;
+    -webkit-background-size: 24px 24px;
+    background-size: 24px 24px;
+    z-index: 99;
+}
+@media only screen and (min-width: 320px) and (max-width: 460px) {
+    .upload{
+        width: 22%;
+        margin-left: 3%;
+    }
+    .upload .remove{
+        top: -8px;
+        right: -5px;
+    }
+}
+@media only screen and (min-width: 461px) and (max-width: 590px) {
+    .upload{
+        width: 22%;
+        margin-left: 3%;
+    }
+    .upload .remove{
+        top: -8px;
+        right: -8px;
+    }
+}
+
+.upload .remove.hide{
+    display: none;
+}
+
+.upload .upload_img{
+    width: 100%;
+    max-width: 200px;
+}
+
+/* 応募ボタン */
+.btn_apply{
+    width: 260px;
+    margin: 20px auto 10px auto;
+
+    padding: 15px 10px;
+    text-align: center;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #638c0b;
+    background: #6db115;
+    background: -moz-linear-gradient(top, #b2d529, #6db115);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b2d529), color-stop(1, #6db115));
+    background: -webkit-linear-gradient(top, #b2d529, #6db115);
+    background: linear-gradient(to bottom, #b2d529, #6db115);
+    -webkit-text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+}
+
+
+/* --------------------------------------------------
+ 応募方法 area elements
+-------------------------------------------------- */
+.stepArea{
+    padding: 0 14px 14px 14px;
+}
+
+.step_wrap{
+    padding: 10px 0;
+    border-bottom: 1px solid #bdb4b1;
+	_zoom:1; 
+	overflow:hidden;
+}
+
+.step_img{
+    float: left;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+
+.step_body{
+    float: left;
+    width: 100%;
+    margin-left: -80px;
+    overflow:hidden;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.step_body .inner{
+    margin-left: 90px;
+    line-height: 1.2;
+}
+
+.step_body h4{
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.step_num{
+    padding-right: 4px;
+    font-size: 115% ;
+    vertical-align: middle;
+}
+
+.step_title{
+    font-size: 18px;
+    padding-bottom: 3px;
+    vertical-align: middle;
+}
+
+.step_body p{
+    font-size: 14px;
+}
+
+
+/* --------------------------------------------------
+ 利用規約・個人情報の取り扱い area elements
+-------------------------------------------------- */
+.policy{
+    font-size: 14px;
+}
+
+.pp_title{
+    margin: 1em 0 0 0;
+    font-weight: bold;
+}
+
+p.pp_text{
+    margin-top: 0.5em;
+}
+
+ol.pp_text{
+    margin-left: 1.5em;
+}
+
+ol.pp_text li{
+    margin-top: 0.5em;
+}
+
+
+/* --------------------------------------------------
+ 活動履歴 area elements
+-------------------------------------------------- */
+.history {
+    line-height: 1.5em;
+	_zoom: 1; 
+	overflow: hidden;
+}
+
+.history.new{
+    color: #a02d32;
+}
+
+.history dt{
+    width: 7em;
+}
+
+.history dd{
+    margin: -1.5em 0 5px 0;
+    padding: 0 0 0 7em;
+}
+
+
+/* --------------------------------------------------
+ ログインページ elements
+-------------------------------------------------- */
+/* sns button
+----------------------------------- */
+.facebook, 
+.twitter, 
+.instagram{
+    width: 80%;
+    min-width: 240px;
+    max-width: 290px;
+    height: 37px;
+    margin: 10px auto;
+    text-align: left;
+}
+
+.facebook img, 
+.twitter img, 
+.instagram img{
+    width: 240px;
+    height: 37px;
+}
+
+.facebook{
+    border: 1px solid #2a3c7f;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background: #293c7f;
+    background: -moz-linear-gradient(top, #6685c4, #293c7f);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6685c4), color-stop(1, #293c7f));
+    background: -webkit-linear-gradient(top, #6685c4, #293c7f);
+    background: linear-gradient(to bottom, #6685c4, #293c7f);
+	-moz-box-shadow:inset 0px 1px 1px 0px #8ba3cf;
+	-webkit-box-shadow:inset 0px 1px 1px 0px #8ba3cf;
+	box-shadow:inset 0px 1px 1px 0px #8ba3cf;
+}
+
+.twitter{
+    border: 1px solid #0d9ef0;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background: #0a95ef;
+    background: -moz-linear-gradient(top, #0ac7f6, #0a95ef);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0ac7f6), color-stop(1, #0a95ef));
+    background: -webkit-linear-gradient(top, #0ac7f6, #0a95ef);
+    background: linear-gradient(to bottom, #0ac7f6, #0a95ef);
+	-moz-box-shadow:inset 0px 1px 1px 0px #1fcdf7;
+	-webkit-box-shadow:inset 0px 1px 1px 0px #1fcdf7;
+	box-shadow:inset 0px 1px 1px 0px #1fcdf7;
+}
+
+.instagram{
+    border: 1px solid #896052;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background: #5a3930;
+    background: -moz-linear-gradient(top, #aa6f5f, #5a3930);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #aa6f5f), color-stop(1, #5a3930));
+    background: -webkit-linear-gradient(top, #aa6f5f, #5a3930);
+    background: linear-gradient(to bottom, #aa6f5f, #5a3930);
+	-moz-box-shadow:inset 0px 1px 1px 0px #b17a68;
+	-webkit-box-shadow:inset 0px 1px 1px 0px #b17a68;
+	box-shadow:inset 0px 1px 1px 0px #b17a68;
+}
+
+
+/* --------------------------------------------------
+ ログアウトページ elements
+-------------------------------------------------- */
+.logout_message{
+    margin: 50px 0;
+    color: #a02d32;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.logout_page{
+    min-height: 280px;
+}
+
+.logout_page .btn_r_arrow{
+    max-width: 400px;
+    margin: 10px auto;
+}
+.logout_page .btn_r_arrow span{
+    display: block;
+    position: relative;
+    padding: 14px 20px 14px 0;
+}
+
+
+/* --------------------------------------------------
+ 写真アップロードウィンドウ elements
+-------------------------------------------------- */
+#uploadpage{
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+#uploadpage #main{
+    margin-bottom:0 !important;
+}
+
+/* upload image area
+----------------------------*/
+.upload_image{
+    position:relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.upload_image img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* custom select
+----------------------------*/
+.typeSelectCustom{
+	line-height: 45px;
+	height: 45px;
+}
+.typeSelectArea{
+    width: 90%;
+    max-width: 320px;
+	height: 40px;
+    margin: 10px auto;
+	_zoom:1; 
+	overflow:hidden;
+    border: 1px solid #959595;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #f2f2f2;
+    background: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f2f2f2));
+    background: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+    background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+}
+
+.typeSelectWrap{
+    float: left;
+    width: 100%;
+    max-width: 320px;
+	height: 40px;
+    margin-left: -40px;
+    overflow:hidden;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    background: url(../img/common/typeSelectArea_arrow.png) right center no-repeat;
+    -moz-background-size: 25px 10px;
+    -webkit-background-size: 25px 10px;
+    background-size: 25px 10px;
+}
+
+.typeSelect{
+    width: 100%;
+    max-width: 280px;
+	height: 40px;
+    margin-left: 40px;
+    overflow: hidden;
+    font-size: 14px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    padding-right: 30px;
+}
+@media only screen and (min-width: 0px) and (max-width: 320px) {
+    .typeSelect{
+        width: 90%;
+    }
+}
+
+.type_img{
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 5px 0 0 5px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.type_img img{
+    width: auto;
+    height: 30px;
+}
+
+/* custom button
+----------------------------*/
+.input_btn{
+    margin: 10px auto;
+    text-align:center;
+}
+
+.btn_upload{
+    width: 90%;
+    max-width: 320px;
+    margin: 0;
+    padding: 14px 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #638c0b;
+    cursor: pointer;
+
+    background: #6db115;
+    background: -moz-linear-gradient(top, #b2d529, #6db115);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b2d529), color-stop(1, #6db115));
+    background: -webkit-linear-gradient(top, #b2d529, #6db115);
+    background: linear-gradient(to bottom, #b2d529, #6db115);
+
+    -webkit-text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.btn_cancel{
+    display: block;
+    width: 70%;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #959595;
+    cursor: pointer;
+
+    background: #a1a19f;
+    background: -moz-linear-gradient(top, #e7e7e7, #a1a19f);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7e7e7), color-stop(1, #a1a19f));
+    background: -webkit-linear-gradient(top, #e7e7e7, #a1a19f);
+    background: linear-gradient(to bottom, #e7e7e7, #a1a19f);
+
+    -webkit-text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.btn_cancel a{
+    color: #fff;
+    display: block;
+}
+
+.btn_ok{
+    display: block;
+    width: 70%;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 14px 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #638c0b;
+    cursor: pointer;
+
+    background: #6db115;
+    background: -moz-linear-gradient(top, #b2d529, #6db115);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b2d529), color-stop(1, #6db115));
+    background: -webkit-linear-gradient(top, #b2d529, #6db115);
+    background: linear-gradient(to bottom, #b2d529, #6db115);
+
+    -webkit-text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.upload_fin_massege{
+    width: 90%;
+    margin: 10px auto;
+}
+
+.upload_fin_massege p{
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+.upload_fin_img{
+    max-width: 300px;
+    margin: 30px auto 10px auto;
+}

@@ -1,0 +1,201 @@
+@charset "utf-8";
+
+/* --------------------------------------------------
+form
+-------------------------------------------------- */
+label{
+    /*
+    display: block;
+    padding: 0.5em 0;
+    */
+    padding: 0.5em 1em 0.5em 0;
+}
+
+select{
+    margin: 5px 0 10px 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    margin: 5px 0 10px 0;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border:solid 1px #a0a0a0;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+input[type="password"] {
+    width: 100%;
+    margin: 5px 0 10px 0;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border:solid 1px #a0a0a0;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+input[type="text"].ipt_s {
+    width: 50%;
+}
+
+input[type="text"].ipt_l {
+    width: 100%;
+}
+input[type="password"].ipt_l {
+    width: 100%;
+}
+
+textarea{
+    width: 100%;
+    height: 70px;
+    margin: 5px 0 10px 0;
+    padding: 5px;
+    border:solid 1px #a0a0a0;
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+    /*
+    -webkit-box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2) inset;
+    */
+}
+
+
+/* custom select
+----------------------------*/
+.birthSelectCustom, 
+.addrSelectCustom{
+	/*font-size:14px;*/
+	line-height: 37px;
+	height: 37px;
+}
+.birthSelect{
+    width:96px;
+    margin: 0;
+    padding-right: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    text-align: -webkit-center;
+}
+.addrSelect{
+    width:148px;
+    margin: 0;
+    padding: 0 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.select_birth{
+	height: 37px;
+	background:url(../img/common/select_birth.png) 0 0 no-repeat;
+    -moz-background-size: 288px auto;
+    -webkit-background-size: 288px auto;
+    background-size: 288px auto;
+    margin: 0 0 20px 0;
+}
+.select_addr{
+	height: 37px;
+	background:url(../img/common/select_addr.png) 0 0 no-repeat;
+    -moz-background-size: 148px auto;
+    -webkit-background-size: 148px auto;
+    background-size: 148px auto;
+    margin: 0 0 5px 0;
+}
+
+
+/* button
+----------------------------*/
+.input_btn{
+    margin: 20px 0 0 0;
+    text-align: center;
+}
+
+.btn_save {
+    width: 140px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #638c0b;
+    cursor: pointer;
+
+    background: #6db115;
+    background-image: -webkit-linear-gradient(to bottom, #b2d529, #6db115);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b2d529), color-stop(1, #6db115));
+    background-image: linear-gradient(to bottom, #b2d529, #6db115);
+
+    -webkit-text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.btn_back{
+    width: 140px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #959595;
+    cursor: pointer;
+
+    background: #a1a19f;
+    background-image: -webkit-linear-gradient(to bottom, #e7e7e7, #a1a19f);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e7e7e7), color-stop(1, #a1a19f));
+    background-image: linear-gradient(to bottom, #e7e7e7, #a1a19f);
+
+    -webkit-text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.btn_login{
+    width: 80%;
+    max-width: 280px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #638c0b;
+    cursor: pointer;
+
+    background: #6db115;
+    background-image: -webkit-linear-gradient(to bottom, #b2d529, #6db115);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b2d529), color-stop(1, #6db115));
+    background-image: linear-gradient(to bottom, #b2d529, #6db115);
+
+    -webkit-text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.33);
+
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+	border-radius: 4px;
+}
