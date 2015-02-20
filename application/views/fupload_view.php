@@ -475,16 +475,14 @@ echo 0; ?>  /> </div></div><?php } }?>
                       <div class="modal-content">
                         
                         <div class="modal-body">
-                          <form action="" class="uploadform dropzone no-margin dz-clickable" id="myDropzone">   
-									あなたの画像を削除するか、またはここをクリック					  
+                          <form action="" class="uploadform dropzone no-margin dz-clickable" id="myDropzone">ここをクリックして、写真を選択して下さい。				  
                    		  <div class="dz-default dz-message">
                           <span>ここにあなたのカバー画像をドロップ</span>
                           </div>
 						  		  
                           </form>
 				
-						 
-						  <p style="padding-left:70px">●種類を選んで投稿してください</p>
+
 				<div class="typeSelectArea pie" style="width:397px;">
 					<div class="type_img"><img src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png" alt="ブルーベリー＆ラズベリー" name="imgsmp"></div>
 						<div class="typeSelectWrap" style="position: relative;width: 382px;">
@@ -511,7 +509,7 @@ echo 0; ?>  /> </div></div><?php } }?>
                           <div class="modal-footer">
 					
 						  <center>
-						  <button type="button" class="btn_upload pie" id="subbuttimg">写真を投稿する</button>
+						  <button type="button" class="btn_upload pie" id="subbuttimg">写真をアップロードする</button>
 						  <?php
 					if ($ci->agent->is_mobile())
 						{

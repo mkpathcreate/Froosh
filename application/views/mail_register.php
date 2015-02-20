@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - アカウントの編集</title>
+<title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - アカウント登録</title>
 <meta name="Description" content="">
 <meta name="Keywords" content="">
 <meta name="author" content="">
@@ -453,7 +453,7 @@ $('#subutton').click(function(){
                         </td>
                     </tr>
 					<tr>
-                        <th style="vertical-align: top;"><p class="bold">住所</p></th>
+                        <th style="vertical-align: top;"><p class="bold">都道府県</p></th>
                         <td>
 						<div class="select_addr pie">
                             <div class="addrSelect_bg pie">
@@ -514,8 +514,8 @@ $('#subutton').click(function(){
 						</div>
 						</tr>
 						<tr>
-						<th style="vertical-align: top;"><p class="bold">市の名前</p></th>
-                        <td><input type=text name="ucity" id="ucity" class="validate[required] form-control ipt_l pie" placeholder="市の名前" value="<?php if(isset($user['ucity']))echo $user['ucity'];?>" style="color: #a7a7a7;"> 
+						<th style="vertical-align: top;"><p class="bold">市区町村名</p></th>
+                        <td><input type=text name="ucity" id="ucity" class="validate[required] form-control ipt_l pie" placeholder="例）札幌市（詳細の住所は不要）" value="<?php if(isset($user['ucity']))echo $user['ucity'];?>" style="color: #a7a7a7;"> 
 						</td>
 					</tr>
 					<tr>
@@ -532,11 +532,11 @@ $('#subutton').click(function(){
 
                    
 					 <p class="center col-md-15">
-<input type=hidden name="umode" id="umode" value="<?php if(isset($user['mode']))echo $user['mode']; else echo "mail"?>"><br>
-	<input type=hidden name="umedia" id="umedia" value="<?php if(isset($umedia))echo $umedia; else echo "PC"?>"><br>
+<input type=hidden name="umode" id="umode" value="<?php if(isset($user['mode']))echo $user['mode']; else echo "mail"?>">
+	<input type=hidden name="umedia" id="umedia" value="<?php if(isset($umedia))echo $umedia; else echo "PC"?>">
 	
 	<div class="input_btn mt0">
-	<input type="submit" value="経由でログイン" style="width:400px" id="subutton" class="btn btn_save pie">
+	<input type="submit" value="アカウントの登録をする" style="width:400px" id="subutton" class="btn btn_save pie">
 	</div>
 
 	</form>
@@ -544,29 +544,20 @@ $('#subutton').click(function(){
 	<hr>
 	<br>
 <div class="facebook pie"><a class="btn btn-block btn-social btn-facebook"  onClick="connect_fb()">
-            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/facebook.png" alt="Facebook???????"></a></div>
+            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/facebook.png" alt="Facebookと連携"></a></div>
 <div class="twitter pie"><a class="btn btn-block btn-social btn-twitter" onClick="connect_tw()" >
-           <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/twitter.png" alt="Twitter???????"></a></div>
+           <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/twitter.png" alt="Twitterと連携"></a></div>
 <div class="instagram pie">
 <a class="btn btn-block btn-social btn-instagram" onClick="connect_ig()"> 
-    <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/instagram.png" alt="instagram???????"></a></div>
-<div class="input_btn mt0">
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+    <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/instagram.png" alt="instagramと連携"></a></div>
 
 
 
-    </div>
-	</div>
+<div class="input_btn mt0"><br/></div>
 
-    
+</div>
 
-	<br>
+
     <div id="footer">
         <address>XrossFace Holdings Co., LTD.</address>
     </div>

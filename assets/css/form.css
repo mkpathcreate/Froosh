@@ -204,7 +204,7 @@ textarea {
     line-height: 70px;
     margin: 0 10px;
     text-align: center;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: bold;
     color: #fff;
     border: 1px solid #638c0b;
@@ -243,7 +243,7 @@ textarea {
     line-height: 70px;
     margin: 0 10px;
     text-align: center;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: bold;
     color: #fff;
     border: 1px solid #959595;
@@ -278,12 +278,12 @@ textarea {
 
 .btn_login {
     position: relative;
-    width: 420px;
+    width: 400px;
     height: 70px;
     line-height: 70px;
     margin: 10px 0;
     text-align: center;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
     color: #fff;
     border: 1px solid #638c0b;

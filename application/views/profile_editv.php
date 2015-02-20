@@ -9,7 +9,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - アカウントの編集</title>
+    <title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - アカウント編集</title>
 
     <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/validationEngine.jquery.css" type="text/css"/>
         
@@ -456,8 +456,8 @@ $dd_list = array(
             <input type=hidden name="umedia" id="umedia" value="<?php if(isset($umedia))echo $umedia; else echo "PC"?>"><br></p>
 
             <div class="input_btn mt0">
-                    <input type="button" value="戻る" id="subutton2" onclick="goBack()" class="btn_back pie">
-                    <input type="button" name="save" id="subutton"  value="保   存" class="btn_save pie">
+                    <input type="button" value="応募ページへ戻る" id="subutton2" onclick="goBack()" class="btn_back pie">
+                    <input type="button" name="save" id="subutton"  value="保存する" class="btn_save pie">
             </div>
 
             </div>

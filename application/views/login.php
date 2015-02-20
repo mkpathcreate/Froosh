@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - アカウントの編集</title>
+<title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - ログイン</title>
 <meta name="Description" content="">
 <meta name="Keywords" content="">
 <meta name="author" content="">
@@ -176,15 +176,12 @@ function connect_tw()
                         <th class="pb0"><p class="bold">パスワード</p></th>
                         <td class="pb0"><input type="password" name="upass" id="upass" value="" class="validate[required,minSize[6]] ipt_l pie"  onFocus="HideFormGuide(this,'*******');" placeholder="*******" onBlur="" style="color: #a7a7a7;"></td>
                     </tr>
-                    <tr>
-                        <td class="pt0 pb0 fs16">&nbsp;</td>
-                        <td class="pt0"><label for="remember_me" class="remind_pass">
-                        </td>
-                    </tr>
             </table>
-            <div class="input_btn">			
-                    <input type="submit" value="ログイン" class="btn_login pie"><br>
-            </div>
+<!--
+<label for="remember_me" class="remind_pass">
+
+-->
+            <div class="input_btn"><input type="submit" value="ログイン" class="btn_login pie"></div>
         </div>
         </form>
         <hr class="light mb30">
