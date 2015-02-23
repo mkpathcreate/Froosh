@@ -12,7 +12,7 @@ $x=$ci->config->item('oauth');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - アカウントの編集</title>  
+    <title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン - 新規アカウント登録</title>  
 
 
 	<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>assets/css/validationEngine.jquery.css" type="text/css"/>
@@ -651,7 +651,7 @@ $user['ubdate'];?>" data-date-format="YYYY/MM/DD"> <span class="input-group-addo
 			
 			<div class="input_btn">
 				<!--<input type="button" value="戻る" onclick="history.back()" class="btn_back">&nbsp;-->
-                            <input type="submit" value="ログイン" id="subutton" class="btn_save" style="width: 285px;"> 
+                            <input type="submit" value="新規登録" id="subutton" class="btn_save" style="width: 285px;"> 
 			</div>
             </div>
       	</form>  
@@ -666,11 +666,6 @@ $user['ubdate'];?>" data-date-format="YYYY/MM/DD"> <span class="input-group-addo
             <a href="<?php echo site_url('home/login');?>" class="btn_back pie">経由でログイン</a> </div>-->
 
 	<!-- end : アカウント編集フォーム -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
 
     </div>
     <!-- end : main -->

@@ -88,7 +88,7 @@
 		ucity:$("#ucity").val()
 			}, function(response){
 				if(response=="success")
-				alert("プロフィール正常に更新");
+				alert("プロフィールを更新しました");
 				});
 				return false;
 			
@@ -364,7 +364,7 @@ offset-1 text-center">
         </div>
         
 
-<!--           <span style="float:left;"> <input type="radio" class="validate[required] radio" name="ugender" value="1" <?php if(isset($user['ugender']) && ($user['ugender']=="Male" || $user['ugender']=="マレ"))echo "checked";?>></span><span style="float:left; margin-left:10px;">マレ</span>
+<!--           <span style="float:left;"> <input type="radio" class="validate[required] radio" name="ugender" value="1" <?php if(isset($user['ugender']) && ($user['ugender']=="Male" || $user['ugender']=="男性"))echo "checked";?>></span><span style="float:left; margin-left:10px;">男性</span>
 		   <span style="float:left; margin-left:10px;"> <input type="radio" class="validate[required] radio" name="ugender" value="2" <?php if(isset($user['ugender']) && ($user['ugender'])=="Female" || $user['ugender']=="女性") echo "checked";?>></span><span style="float:left; margin-left:10px;"> 女性</span> 
 		    </div>
                    </div>
@@ -640,7 +640,7 @@ offset-1 text-center">
                         
                         <div class="input_btn">
 				<input type="button" value="戻る" id="subutton2"  onclick="goBack()" class="btn_back">&nbsp;
-				<input type="submit" value="保　存" id="subutton" class="btn_save">
+				<input type="submit" value="保存する" id="subutton" class="btn_save">
 			</div>
                         
           </div>
