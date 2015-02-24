@@ -158,7 +158,7 @@
     </div>
     <!-- start : header -->
     <div id="header">
-        <div class="logo"><a href="mypage.php"><img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/logo.png" alt="froosh"></a></div>
+        <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/logo.png" alt="froosh"></div>
         <div class="accountArea">
             
         </div>

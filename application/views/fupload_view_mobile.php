@@ -319,7 +319,7 @@ $.ajax({
 		
 		 <div id="header" style="height:92px">
 		 
-         <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
+         <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></div>
         <div class="accountArea">
             <div class="account_btn blockLink"><a href="<?php echo $this->config->item('base_url'); ?>home/profile_edit"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>
 			<div class="account_btn blockLink" style="margin-top:10px"><a href="<?php echo $this->config->item('base_url')."home/logout/"; ?>"><span>ログアウト</span></a></div>
@@ -414,11 +414,12 @@ $.ajax({
 						<div class="typeSelectWrap" style="position: relative;">
 						
 				<select name="focus" class="typeSelect hasCustomSelect" id="type" onchange="imgChange(this)" style="position: absolute;opacity: 0;margin-top: 0px;margin-left: 50px;border:0px"> 
+                
 								<option value="0" selected="selected">ブルーベリー＆ラズベリー</option>
 								<option value="1">マンゴー＆オレンジ</option>
 								<option value="2">パイナップル・バナナ＆ココナッツ</option>
 								<option value="3">オレンジ・キャロット＆ジンジャー</option>
-								<!--<option value="4">??????�???&???</option>-->
+
 							</select>
 							<span class="typeSelectCustom typeSelect" style="display: inline-block;">
 			
@@ -426,7 +427,7 @@ $.ajax({
 </span>
 						</div>
 				</div>
-				<p class="notice fs14 center">※既に登録した種類を再度選択することはできません。</p>
+				<p class="notice fs14 center">既に登録した種類を<br />再度選択することはできません。</p>
 				
 				<div>
 

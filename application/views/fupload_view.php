@@ -262,7 +262,7 @@ $("form#myDropzone .dz-clickable").trigger('click');
 function iminfo(event,x){
 event.stopPropagation();
 var formData={"imid":x};
-if(confirm("本気ですか？"))
+if(confirm("確定しても宜しいですか？"))
 {
 $.ajax({
     url : "<?php echo base_url();?>home/deleteimage",
@@ -362,7 +362,7 @@ $.ajax({
 		
 		
     <div id="header">
-        <div class="logo"><a href="mypage.php"><img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/logo.png" alt="froosh"></a></div>
+        <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/logo.png" alt="froosh"></div>
         <div class="accountArea">
             <div class="account_btn blockLink pie"><a href="<? echo $this->config->item('base_url')."home/profile_edit/"; ?>"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>
 				
@@ -475,7 +475,7 @@ echo 0; ?>  /> </div></div><?php } }?>
                       <div class="modal-content">
                         
                         <div class="modal-body">
-                          <form action="" class="uploadform dropzone no-margin dz-clickable" id="myDropzone">ここをクリックして、写真を選択して下さい。				  
+                          <form action="" class="uploadform dropzone no-margin dz-clickable" id="myDropzone">ここをクリックして、<br />写真を選択して下さい。				  
                    		  <div class="dz-default dz-message">
                           <span>ここにあなたのカバー画像をドロップ</span>
                           </div>

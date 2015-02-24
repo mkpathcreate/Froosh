@@ -328,7 +328,7 @@ offset-1 text-center">
 
     <!-- start : header -->
     <div id="header">
-        <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
+        <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></div>
         <div class="accountArea">
             <!--<div class="account_btn blockLink pie"><a href="<?php echo $this->config->item('base_url'); ?>home/profile_edit"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>-->
         </div>

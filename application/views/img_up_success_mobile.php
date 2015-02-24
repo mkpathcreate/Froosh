@@ -24,7 +24,7 @@
     <!-- start : header -->
     <div id="header">
 
-        <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
+        <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></div>
 
     </div>
     <!-- end : header -->

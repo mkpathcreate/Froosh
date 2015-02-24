@@ -807,7 +807,7 @@ ol.pp_text li{
 
 .btn_upload{
     width: 90%;
-    max-width: 320px;
+    max-width: 340px;
     margin: 0;
     padding: 14px 0;
     text-align: center;
@@ -834,8 +834,8 @@ ol.pp_text li{
 
 .btn_cancel{
     display: block;
-    width: 70%;
-    max-width: 280px;
+    width: 90%;
+    max-width: 340px;
     margin: 0 auto;
     padding: 10px 0;
     text-align: center;
@@ -873,7 +873,7 @@ ol.pp_text li{
     padding: 14px 0;
     text-align: center;
     line-height: 1;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: bold;
     color: #fff;
     border: 1px solid #638c0b;

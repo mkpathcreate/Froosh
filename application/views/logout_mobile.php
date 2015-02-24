@@ -17,7 +17,7 @@
 <div id="wrapper">
     <!-- start : header -->
     <div id="header">
-        <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
+        <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></div>
 <!--        <div class="accountArea">
             <div class="account_btn blockLink"><a href="#"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>
         </div>-->
