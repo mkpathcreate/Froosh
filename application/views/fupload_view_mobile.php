@@ -7,7 +7,7 @@
 <meta name="author" content="">
 <title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン 応募ページ</title>
 <link href="<?php echo base_url(); ?>assets/css/dropzone.css" type="text/css" rel="stylesheet" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=0">
 
 
 <?php
@@ -21,8 +21,8 @@ $ci->load->library('user_agent',TRUE);
         <link href="<?php echo base_url(); ?>assets/mobile/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.8.2.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dropzone.min.js" type="text/javascript"> </script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.customSelect.js" type="text/javascript"> </script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dropzone.min.js" > </script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.customSelect.js" > </script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/mobile/boostrapv3/js/bootstrap.min.js" type="text/javascript"> </script>
         <script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/common.js"></script>
         <script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/image-scale.js"></script>
@@ -30,22 +30,23 @@ $ci->load->library('user_agent',TRUE);
 
 <script type="text/javascript">
         var flist="";
-        img0=new Image()
-	img0.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_br.png"
-	img1=new Image()
-	img1.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_mo.png"
+        img1=new Image()
+	img1.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_br.png"
 	img2=new Image()
-	img2.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_pbc.png"
+	img2.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_mo.png"
 	img3=new Image()
-	img3.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_ocg.png"
+	img3.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_pbc.png"
+	img4=new Image()
+	img4.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_ocg.png"
 	
 	
 	function imgChange(parts){
             fname=parts.options[parts.selectedIndex].value;
-            if(fname==0){document.imgsmp.src=img0.src;}
             if(fname==1){document.imgsmp.src=img1.src;}
             if(fname==2){document.imgsmp.src=img2.src;}
             if(fname==3){document.imgsmp.src=img3.src;}
+            if(fname==4){document.imgsmp.src=img4.src;}
+			if(fname==0){document.imgsmp.src=img4.src;}
 	
 	}
 
@@ -63,9 +64,9 @@ $(document).ready(function(){
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			var myDate=parseInt(imlist2[i]['idate'].replace('/Date(', ''));
 			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);	
 			
@@ -90,10 +91,11 @@ $(document).ready(function(){
     if(typeof $(idClicked).attr('flaid')=='undefined' || $(idClicked).attr('flaid')=='undefined'){
     $('#seldata')
         .empty()
-        .append('<option selected="selected" value="0">ブルーベリー＆ラズベリー</option>')
-        .append('<option value="1">マンゴー＆オレンジ</option>')
-        .append('<option value="2">パイナップル・バナナ＆ココナッツ</option>')
-        .append('<option value="3">オレンジ・キャロット＆ジンジャー</option>');
+	    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
+		.append('<option value="1">ブルーベリー＆ラズベリー</option>')
+        .append('<option value="2">マンゴー＆オレンジ</option>')
+        .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
+        .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
 
     $("#seldata").attr("disabled",false);
     console.log("flist @"+flist);
@@ -110,10 +112,11 @@ $(document).ready(function(){
     flaid=$(idClicked).attr('flaid');
     $('#seldata')
         .empty()
-        .append('<option value="0">ブルーベリー＆ラズベリー</option>')
-        .append('<option value="1">マンゴー＆オレンジ</option>')
-        .append('<option value="2">パイナップル・バナナ＆ココナッツ</option>')
-        .append('<option value="3">オレンジ・キャロット＆ジンジャー</option>');
+	    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
+		.append('<option value="1">ブルーベリー＆ラズベリー</option>')
+        .append('<option value="2">マンゴー＆オレンジ</option>')
+        .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
+        .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
 
     $("#seldata option[value='" + flaid + "']").attr("selected", true);
     $("#seldata").attr("disabled","disabled");
@@ -216,9 +219,9 @@ maxFilesize:3,
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			var myDate=parseInt(imlist2[i]['idate'].replace('/Date(', ''));
 			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);	
 			
@@ -256,7 +259,7 @@ $.ajax({
 		alert('画像の削除');
 		t="#img"+x;
 			$("#sucbut").prop( "href", "#" );
-		$(t).attr('src','<?php echo base_url(); ?>assets/img/common/upload_common.png');
+		$(t).attr('src','<?php echo base_url(); ?>assets/mobile/img/common/upload_common.png');
 		$(t).attr('flaid',"undefined");
 		$(this).next().hide();	
 		$(event.target).hide();
@@ -293,9 +296,9 @@ $.ajax({
 			fresult="";
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);		
 		}
@@ -413,12 +416,12 @@ $.ajax({
 					<div class="type_img"><img src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png" alt="ブルーベリー＆ラズベリー" name="imgsmp"></div>
 						<div class="typeSelectWrap" style="position: relative;">
 						
-				<select name="focus" class="typeSelect hasCustomSelect" id="type" onchange="imgChange(this)" style="position: absolute;opacity: 0;margin-top: 0px;margin-left: 50px;border:0px"> 
-                
-								<option value="0" selected="selected">ブルーベリー＆ラズベリー</option>
-								<option value="1">マンゴー＆オレンジ</option>
-								<option value="2">パイナップル・バナナ＆ココナッツ</option>
-								<option value="3">オレンジ・キャロット＆ジンジャー</option>
+				<select name="focus" class="typeSelect hasCustomSelect" id="seldata" onchange="imgChange(this)" style="position: absolute;opacity: 0;margin-top: 0px;margin-left: 50px;border:0px"> 
+								<option value="0" selected="selected">frooshのフレーバーを選択</option>
+								<option value="1" >ブルーベリー＆ラズベリー</option>
+								<option value="2">マンゴー＆オレンジ</option>
+								<option value="3">パイナップル・バナナ＆ココナッツ</option>
+								<option value="4">オレンジ・キャロット＆ジンジャー</option>
 
 							</select>
 							<span class="typeSelectCustom typeSelect" style="display: inline-block;">

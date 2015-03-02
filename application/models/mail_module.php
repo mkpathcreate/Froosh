@@ -41,7 +41,7 @@ class mail_module extends CI_Model{
 	 $insert_id = $this->db->insert_id();
 	  $from=trim($udata['uemail']);
 	  if($this->db->affected_rows()>=1)
-	   $this->send_mail($from);
+	   $this->send_mail($from,$udata_db);
 	 return $insert_id;
 	}
 	else
@@ -183,8 +183,16 @@ class mail_module extends CI_Model{
 
 
 
-	function send_mail($to)
+	function send_mail($to,$udata)
 	{
+	
+	$name=$udata['uname'];
+	$email=$udata['uemail'];
+	$fname=$udata['ufullname'];
+	$gender=$udata['ugender'];
+	$dob= $udata['ubdate'];
+	$add=$udata['uprefecture'].",".$udata['ucity'];
+	$rdate=$udata['ureg_date'];
   mb_language("Japanese");
 
   $this->load->library('myemail');
@@ -263,10 +271,22 @@ Facebookサイト　:　 https://www.facebook.com/frooshjapan
 
 
 //mail to admin
-$subject_admin = "froosh キャンペーン新規ユーザー登録のお知らせ";
+//$subject_admin = "froosh キャンペーン新規ユーザー登録のお知らせ";
+$subject_admin = "【froosh CP】本登録がありました";
 
+//$message_admin = "froosh キャンペーンサイトにて、新規ユーザーが登録されました。 ";
 $message_admin = "
-froosh キャンペーンサイトにて、新規ユーザーが登録されました。
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+名前（ニックネーム）：　$name
+メールアドレス：　$email
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+名前（本名）：　$fname
+性別：　$gender
+生年月日：　$dob
+住所：　$add
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+Registered Date:  $rdate
+
 ";
 
 
@@ -345,14 +365,20 @@ function getuid($uname)
 	}
 	function image_list($uid)
 	{
+		$x="`phase`=(select max(phase) from images where u_id=".$uid." and image_status=1)";
 		$this->db->select("DATE_FORMAT(image_up_date,'%Y/%m/%d') as idate",FALSE);
-		$this->db->select("image_fla_name as fname");
+		//$this->db->select("group_concat(image_fla_name) as fname");
+		$this->db->select("group_concat(image_fla_name) as fname");
 		
 	        $this->db->from('images');
 		$this->db->where('u_id',$uid);
 		$this->db->where('image_status',1);
-	
+		$this->db->where($x, NULL, FALSE);
+		$this->db->group_by("day(image_up_date)"); 
+		//$this->db->where('fstatus',0);
+		
 		$this->db->order_by("image_up_date desc"); 
+		 //$this->db->limit(4, 0);
 		$res=$this->db->get();
 		if($res->num_rows()>0)
 		{

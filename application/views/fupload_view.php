@@ -8,7 +8,7 @@
 <title>froosh（フルーシュ）を飲んで北欧に行こうキャンペーン 応募ページ</title>
 <link href="<?php echo base_url(); ?>assets/css/dropzone.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/css/default.css" media="all">
-
+<!-- HTML-->
 <?php
 $ci = get_instance(); 
 $ci->load->library('user_agent',TRUE);
@@ -41,22 +41,24 @@ $ci->load->library('user_agent',TRUE);
 
 <script type="text/javascript">
 var flist="";
-img0=new Image()
-	img0.src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png"
-	img1=new Image()
-	img1.src="<?php echo base_url(); ?>assets/img/common/type_img_mo_pc.png"
+
+img1=new Image()
+	img1.src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png"
 	img2=new Image()
-	img2.src="<?php echo base_url(); ?>assets/img/common/type_img_pbc_pc.png"
+	img2.src="<?php echo base_url(); ?>assets/img/common/type_img_mo_pc.png"
 	img3=new Image()
-	img3.src="<?php echo base_url(); ?>assets/img/common/type_img_ocg_pc.png"
+	img3.src="<?php echo base_url(); ?>assets/img/common/type_img_pbc_pc.png"
+	img4=new Image()
+	img4.src="<?php echo base_url(); ?>assets/img/common/type_img_ocg_pc.png"
 
 	
 	function imgChange(parts){
 	fname=parts.options[parts.selectedIndex].value;
-	if(fname==0){document.imgsmp.src=img0.src;}
 	if(fname==1){document.imgsmp.src=img1.src;}
 	if(fname==2){document.imgsmp.src=img2.src;}
 	if(fname==3){document.imgsmp.src=img3.src;}
+	if(fname==4){document.imgsmp.src=img4.src;}
+	if(fname==0){document.imgsmp.src=img4.src;}
 
 	}
 
@@ -71,12 +73,28 @@ $("#sucbut").prop( "href", "#" );
 		    {
 			imlist2=JSON.parse(data);
 			fresult="";
+			c=0;
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			var myDate=parseInt(imlist2[i]['idate'].replace('/Date(', ''));
-			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
-			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			if(i==0){
+			temp=imlist2[i]['fname'].split(",");
+				if(temp.length>2){
+				if(typeof temp[3]!='undefined'){
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+				}
+				else
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+			
+							}
+				else{
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+imlist2[i]['fname']+")</dd></dl>";
+			}
+			
+			}
+			else{
+			
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			}
 			}
 			$("#userstatus").html(fresult);	
 			
@@ -99,10 +117,11 @@ idClicked="#"+e.target.id;
 if(typeof $(idClicked).attr('flaid')=='undefined' || $(idClicked).attr('flaid')=='undefined'){
 $('#seldata')
     .empty()
-    .append('<option selected="selected" value="0">ブルーベリー＆ラズベリー</option>')
-    .append('<option value="1">マンゴー＆オレンジ</option>')
-    .append('<option value="2">パイナップル・バナナ＆ココナッツ</option>')
-    .append('<option value="3">オレンジ・キャロット＆ジンジャー</option>')
+	.append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
+    .append('<option value="1">ブルーベリー＆ラズベリー</option>')
+    .append('<option value="2">マンゴー＆オレンジ</option>')
+    .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
+    .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>')
     
 ;
 
@@ -120,11 +139,11 @@ else
 flaid=$(idClicked).attr('flaid');
 $('#seldata')
     .empty()
-    .append('<option value="0">ブルーベリー＆ラズベリー</option>')
-  
-    .append('<option value="1">マンゴー＆オレンジ</option>')
-    .append('<option value="2">パイナップル・バナナ＆ココナッツ</option>')
-    .append('<option value="3">オレンジ・キャロット＆ジンジャー</option>')
+	.append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
+    .append('<option value="1">ブルーベリー＆ラズベリー</option>')
+    .append('<option value="2">マンゴー＆オレンジ</option>')
+    .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
+    .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>')
   
 ;
 
@@ -138,7 +157,7 @@ $("#seldata").attr("disabled","disabled");
 });
 
 
-$('select').on('change', function() {
+/*$('select').on('change', function() {
 
   x=$('select option:not(:selected)');
   
@@ -146,7 +165,7 @@ $('select').on('change', function() {
   out="<input type=checkbox id="+x[0].text+" name="+x[0].value+">"+x[0].value+"<br><input type=checkbox id="+x[1].value+" name="+x[1].value+">"+x[1].value+"<br><input type=checkbox id="+x[2].value+" name="+x[2].value+">"+x[2].value;
  
   
-});
+});*/
 
 
 $(".uploadform").dropzone({	
@@ -162,7 +181,7 @@ maxFilesize:3,
 	var submitButton = document.querySelector("#subbuttimg")
         myDropzone = this; // closure
 	this.on("maxfilesexceeded", function(file){
-        alert("No more files please!");
+        alert("これ以上のファイルしてください！");
 	 this.removeFile(file);
     });
 	this.on("uploadprogress",function(file, progress) {
@@ -173,7 +192,7 @@ maxFilesize:3,
 	if(v1!=0)
       myDropzone.processQueue(); 
 	else
-	  alert("イメージとフレーバーを選択");
+	  alert("frooshのフレーバーを選択");
     });
     },
 	sending:function(file, xhr, formData) {
@@ -194,6 +213,21 @@ maxFilesize:3,
 		var y=re.split(',');
 		x=y[0];
 		iid=y[1];
+		//butstatus=y[2];
+		fl=y[3].split('-');
+		
+		if(fl.length>0)
+		
+		
+		for(i=0;i<fl.length;i++)
+		{
+		//$("#seldata option[value='" + p[i]+ "']").attr("disabled", true);
+	
+		$("#seldata option[value='" + fl[i]+ "']").attr("disabled",true);
+		
+	
+		}
+		
 		$('.icon').hide();
 		$('#uploader').modal('hide');
 		
@@ -210,18 +244,18 @@ maxFilesize:3,
 		$('.thumb').attr('src',x.thumb);
 		$('img').addClass('imgdecoration');
 		this.removeAllFiles();
-		if(x.butstatus==1)
+		/*if(butstatus==1)
 		{
 		alert("あなたが最初の画像をアップロードする");
 		}
-		if(x.butstatus==2)
+		if(butstatus==2)
 		{
 		$("#sucbut").show();
 		}
 		else
 		{
-		//$("#sucbut").hide();
-		}
+		$("#sucbut").hide();
+		}*/
 		if(x.phase>1)
 		{
 	
@@ -237,9 +271,22 @@ maxFilesize:3,
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			var myDate=parseInt(imlist2[i]['idate'].replace('/Date(', ''));
 			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			{
+			temp=imlist2[i]['fname'].split(",");
+				if(temp.length>2){
+			if(typeof temp[3]!='undefined'){
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+				}
+				else
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+			
+							}
+				else{
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			}
+			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);	
 			
@@ -314,10 +361,22 @@ $.ajax({
 			fresult="";
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			
-			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			if(i==0){
+			temp=imlist2[i]['fname'].split(",");
+				if(temp.length>2){
+			if(typeof temp[3]!='undefined'){
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+				}
+				else
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+			
+							}
+				else{
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			}
+			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd>"+imlist2[i]['fname']+"</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);		
 		}
@@ -470,29 +529,30 @@ echo 0; ?>  /> </div></div><?php } }?>
 	</div>
 	</div>
 
-                   <div class="modal fade" id="uploader" tabindex="-1" role="dialog" aria-labelledby="updater" aria-hidden="true">
+                   <div class="modal fade" id="uploader" tabindex="-1" role="dialog" aria-labelledby="updater" aria-hidden="true" style="">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         
-                        <div class="modal-body">
+                       <div class="modal-body"> <center>
                           <form action="" class="uploadform dropzone no-margin dz-clickable" id="myDropzone">ここをクリックして、<br />写真を選択して下さい。				  
                    		  <div class="dz-default dz-message">
                           <span>ここにあなたのカバー画像をドロップ</span>
                           </div>
 						  		  
-                          </form>
+                          </form></center>
 				
 
-				<div class="typeSelectArea pie" style="width:397px;">
+				<div class="typeSelectArea pie" style="width:390px;">
 					<div class="type_img"><img src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png" alt="ブルーベリー＆ラズベリー" name="imgsmp"></div>
 						<div class="typeSelectWrap" style="position: relative;width: 382px;">
 							
 				<select name="focus" class="typeSelect hasCustomSelect" id="seldata" onchange="imgChange(this)" style="position: absolute;opacity: 0.34
-				;margin-top: 0px;width: 350px;margin-left: 50px;border:0px"> 
-								<option value="0" selected="selected">ブルーベリー＆ラズベリー</option>
-								<option value="1">マンゴー＆オレンジ</option>
-								<option value="2">パイナップル・バナナ＆ココナッツ</option>
-								<option value="3">オレンジ・キャロット＆ジンジャー</option>
+				;margin-top: 0px;width: 345px;margin-left: 50px;border:0px"> 
+								<option value="0" selected="selected">frooshのフレーバーを選択</option>
+								<option value="1" >ブルーベリー＆ラズベリー</option>
+								<option value="2">マンゴー＆オレンジ</option>
+								<option value="3">パイナップル・バナナ＆ココナッツ</option>
+								<option value="4">オレンジ・キャロット＆ジンジャー</option>
 								
 							</select>
 	
