@@ -92,10 +92,10 @@ $(document).ready(function(){
     $('#seldata')
         .empty()
 	    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
-		.append('<option value="1">ブルーベリー＆ラズベリー</option>')
-        .append('<option value="2">マンゴー＆オレンジ</option>')
-        .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
-        .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
+		.append('<option value="1">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>')
+        .append('<option value="2">ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>')
+        .append('<option value="3">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>')
+        .append('<option value="4">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>');
 
     $("#seldata").attr("disabled",false);
     console.log("flist @"+flist);
@@ -113,10 +113,10 @@ $(document).ready(function(){
     $('#seldata')
         .empty()
 	    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
-		.append('<option value="1">ブルーベリー＆ラズベリー</option>')
-        .append('<option value="2">マンゴー＆オレンジ</option>')
-        .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
-        .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
+		.append('<option value="1">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>')
+        .append('<option value="2">ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>')
+        .append('<option value="3">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>')
+        .append('<option value="4">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>');
 
     $("#seldata option[value='" + flaid + "']").attr("selected", true);
     $("#seldata").attr("disabled","disabled");
@@ -413,20 +413,20 @@ $.ajax({
                           </form>
 
 				<div class="typeSelectArea " >
-					<div class="type_img"><img src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png" alt="ブルーベリー＆ラズベリー" name="imgsmp"></div>
+					<div class="type_img"><img src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png" alt="ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ" name="imgsmp"></div>
 						<div class="typeSelectWrap" style="position: relative;">
 						
 				<select name="focus" class="typeSelect hasCustomSelect" id="seldata" onchange="imgChange(this)" style="position: absolute;opacity: 0;margin-top: 0px;margin-left: 50px;border:0px"> 
 								<option value="0" selected="selected">frooshのフレーバーを選択</option>
-								<option value="1" >ブルーベリー＆ラズベリー</option>
-								<option value="2">マンゴー＆オレンジ</option>
-								<option value="3">パイナップル・バナナ＆ココナッツ</option>
-								<option value="4">オレンジ・キャロット＆ジンジャー</option>
+								<option value="1" >ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>
+								<option value="2">ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>
+								<option value="3">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>
+								<option value="4">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>
 
 							</select>
 							<span class="typeSelectCustom typeSelect" style="display: inline-block;">
 			
-<span class="typeSelectCustomInner" style="display: inline-block;">マンゴー＆オレンジ</span>
+<span class="typeSelectCustomInner" style="display: inline-block;">ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</span>
 </span>
 						</div>
 				</div>
