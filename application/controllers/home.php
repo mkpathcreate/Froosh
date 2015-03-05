@@ -10,6 +10,7 @@ class Home extends CI_Controller {
 	$this->load->library('user_agent','recaptcha');
 	$this->load->helper(array('form', 'url','captcha','string'));
 	$this->load->library('form_validation');
+		//$this->load->model('mail_module','','TRUE');
 	$this->load->database();
        
 
@@ -18,11 +19,13 @@ class Home extends CI_Controller {
 	public function index()
 	{
 
-		$this->mail();
+		//$this->mail();
+		//redirect("home/signup");
+	$this->load->view('main_screen');
 	
 		
 	}
-	public function mail()
+	public function signup()
 	{
 		$vals = array(
 	        'img_path' => 'assets/captcha',
@@ -81,7 +84,7 @@ class Home extends CI_Controller {
 			$this->load->model('mail_module');
 			 
 			$x=$this->mail_module->umregister($data);
-			
+		
 			$r=$this->mail_module->user_infoid($x);
 			$this->session->set_userdata('logged_in', $r);
 				if($x=='')
@@ -322,7 +325,14 @@ class Home extends CI_Controller {
 			{
 				$session_data = $this->session->userdata('logged_in');
 				$img_res=$this->mail_module->userimages($session_data['uid']);
+				if ($this->agent->is_mobile())
+				{
+				$this->load->view('fupload_view_mobile',$img_res);
+				}
+				elseif ($this->agent->is_browser())
+				{
 				$this->load->view('fupload_view',$img_res);
+				}
 			}
 			else
 			{
@@ -480,7 +490,16 @@ class Home extends CI_Controller {
 		
 		echo json_encode($image);
 	}
-   
+
+	function success3(){
+		$session_data = $this->session->userdata('logged_in');
+		$x=$this->input->post( 'ph' );
+		$this->load->model('mail_module');
+		$flv=$this->mail_module->flv_list3($session_data['uid'],$x);
+		
+		echo json_encode($flv);
+	}
+	
 	 public function deleteimage() {
 	 
 	 $this->load->model('image_module');

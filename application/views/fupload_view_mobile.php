@@ -39,18 +39,17 @@ $ci->load->library('user_agent',TRUE);
 	img4=new Image()
 	img4.src="<?php echo base_url(); ?>assets/mobile/img/common/type_img_ocg.png"
 	
-	
 	function imgChange(parts){
-            fname=parts.options[parts.selectedIndex].value;
+/*             fname=parts.options[parts.selectedIndex].value;
             if(fname==1){document.imgsmp.src=img1.src;}
             if(fname==2){document.imgsmp.src=img2.src;}
             if(fname==3){document.imgsmp.src=img3.src;}
             if(fname==4){document.imgsmp.src=img4.src;}
-			if(fname==0){document.imgsmp.src=img4.src;}
-	
+			if(fname==0){document.imgsmp.src=img4.src;} */
 	}
 
 $(document).ready(function(){	
+//$('.typeSelect').customSelect({customClass:'typeSelectCustom'});
  $("img.scale").imageScale();
  $("#iview").hide();
  $("#sucbut").prop( "href", "#" );
@@ -61,21 +60,33 @@ $(document).ready(function(){
 		    {
 			imlist2=JSON.parse(data);
 			fresult="";
+			c=0;
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			var myDate=parseInt(imlist2[i]['idate'].replace('/Date(', ''));
 			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
-			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			{
+			temp=imlist2[i]['fname'].split(",");
+				if(temp.length>2){
+				if(typeof temp[3]!='undefined'){
+					fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+				}
+				else
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+				}
+				else{
+					fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
+				}
+			
+			}
+			else{
+			
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
+			}
 			}
 			$("#userstatus").html(fresult);	
 			
 		}
 		});
-
-
-
-
     Dropzone.autoDiscover = false; // keep this line if you have multiple dropzones in the same page
             var idClicked;
            var idClicked2;
@@ -88,51 +99,55 @@ $(document).ready(function(){
 
     idClicked="#"+e.target.id;
 
-    if(typeof $(idClicked).attr('flaid')=='undefined' || $(idClicked).attr('flaid')=='undefined'){
-    $('#seldata')
-        .empty()
-	    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
-		.append('<option value="1">ブルーベリー＆ラズベリー</option>')
-        .append('<option value="2">マンゴー＆オレンジ</option>')
-        .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
-        .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
-
-    $("#seldata").attr("disabled",false);
-    console.log("flist @"+flist);
-    for ( i = 1; i <6; i++) {
-    $("#seldata option[value='" + i+ "']").attr("disabled", false);
-    }
-    p=flist.split(",");
-     for (var i = 0, len = p.length; i < len; i++) {
-    $("#seldata option[value='" + p[i]+ "']").attr("disabled", true);
-    }
-    }
-    else
-    {
-    flaid=$(idClicked).attr('flaid');
-    $('#seldata')
-        .empty()
-	    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
-		.append('<option value="1">ブルーベリー＆ラズベリー</option>')
-        .append('<option value="2">マンゴー＆オレンジ</option>')
-        .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
-        .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
-
-    $("#seldata option[value='" + flaid + "']").attr("selected", true);
-    $("#seldata").attr("disabled","disabled");
+  if(typeof $(idClicked).attr('flaid')=='undefined' || $(idClicked).attr('flaid')=='undefined'){
 
 
-    }
+	x=parseInt($('#fspan').html());
+	data="ph="+x;
+	
+	$.ajax({
+		    url : "<?php echo base_url();?>home/success3",
+		    type: "POST",
+			data:data,
+		    success: function(data)
+		    {
+			imlist2=JSON.parse(data);
+		
+			if(typeof imlist2[0]!="undefined")
+			$("#seldata option[value='" + imlist2[0].image_fla_id+ "']").remove();
+			else
+				$("#seldata option[value='0']").attr("selected","selected");
+			}
+			});
+	$("#seldata").attr("disabled",false);
+	
+	
 
+}
+else
+{
+flaid=$(idClicked).attr('flaid');
+$('#seldata')
+    .empty()
+    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
+	.append('<option value="1" >ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>')
+	.append('<option value="2">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>')
+	.append('<option value="3">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>')
+	.append('<option value="4">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>')
+;
+
+$("#seldata option[value='" + flaid + "']").attr("selected", true);
+$("#seldata").attr("disabled","disabled");
+}
 }
 });
 
 
-    $('select').on('change', function() {
+/*     $('select').on('change', function() {
 
     x=$('select option:not(:selected)');
     out="<input type=checkbox id="+x[0].text+" name="+x[0].value+">"+x[0].value+"<br><input type=checkbox id="+x[1].value+" name="+x[1].value+">"+x[1].value+"<br><input type=checkbox id="+x[2].value+" name="+x[2].value+">"+x[2].value;
-});
+}); */
 
 $(".uploadform").dropzone({	
 autoProcessQueue:false,
@@ -146,7 +161,7 @@ maxFilesize:3,
 	var submitButton = document.querySelector("#subbuttimg")
         myDropzone = this; // closure
 	this.on("maxfilesexceeded", function(file){
-        alert("No more files please!");
+               alert("これ以上のファイルしてください！");
 	 this.removeFile(file);
     });
 	this.on("uploadprogress",function(file, progress) {
@@ -157,7 +172,7 @@ maxFilesize:3,
 	if(v1!=0)
       myDropzone.processQueue(); 
 	else
-	  alert("イメージとフレーバーを選択");
+	   alert("frooshのフレーバーを選択");
     });
     },
 	sending:function(file, xhr, formData) {
@@ -176,6 +191,28 @@ maxFilesize:3,
 		var y=re.split(',');
 		x=y[0];
 		iid=y[1];
+		fl=y[3].split('-');
+		if(typeof y[4]!='undefined'){
+		flid=y[4];
+		}
+		else
+		flid=0;
+		if(y[2]!=1){
+		if(fl.length>0)
+			
+		for(i=0;i<fl.length;i++)
+		{
+		//$("#seldata option[value='" + p[i]+ "']").attr("disabled", true);
+	
+		//$("#seldata option[value='" + fl[i]+ "']").attr("disabled",true);
+		//$("#seldata option[value='" + fl[i]+ "']").hide();
+		$("#seldata option[value='" + fl[i]+ "']").remove();
+		
+
+		}
+		}
+		flist=fl;
+		$("#seldata option[value='0']").attr("selected","selected");
 		$('.icon').hide();
 		$('#uploader').modal('hide');
 		
@@ -183,7 +220,8 @@ maxFilesize:3,
 		$(idClicked).attr('iminfo',x.iid);
 		
 		$(idClicked).parent().prepend('<div class="remove bg_fit" onclick="iminfo(event,'+iid+');"></div>');
-		$(idClicked).attr('flaid',x.fname);
+		/* $(idClicked).attr('flaid',x.fname); */
+		$(idClicked).attr('flaid',flid);
 		
 		$(idClicked).attr('id',"img"+iid);
 		idClicked2="#img"+x.iid;
@@ -192,7 +230,7 @@ maxFilesize:3,
 		$('.thumb').attr('src',x.thumb);
 		$('img').addClass('imgdecoration');
 		this.removeAllFiles();
-		if(x.butstatus==1)
+/* 		if(x.butstatus==1)
 		{
 		alert("あなたが最初の画像をアップロードする");
 		}
@@ -203,7 +241,8 @@ maxFilesize:3,
 		else
 		{
 		//$("#sucbut").hide();
-		}
+
+		} */
 		if(x.phase>1)
 		{
 	
@@ -219,9 +258,22 @@ maxFilesize:3,
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			var myDate=parseInt(imlist2[i]['idate'].replace('/Date(', ''));
 			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			{
+			temp=imlist2[i]['fname'].split(",");
+				if(temp.length>2){
+			if(typeof temp[3]!='undefined'){
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+				}
+				else
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+			
+							}
+				else{
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
+			}
+			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);	
 			
@@ -244,7 +296,7 @@ $("form#myDropzone .dz-clickable").trigger('click');
 function iminfo(event,x){
 event.stopPropagation();
 var formData={"imid":x};
-if(confirm("本気ですか？"))
+if(confirm("確定しても宜しいですか？"))
 {
 $.ajax({
     url : "<?php echo base_url();?>home/deleteimage",
@@ -258,6 +310,32 @@ $.ajax({
 	   {
 		alert('画像の削除');
 		t="#img"+x;
+		fid=$(t).attr('flaid');
+		if( typeof(fid)!="undefined")
+		{
+
+			if(fid==1)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="1" >ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>')
+			}
+			else if(fid==2)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="2">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>');
+			}
+			else if(fid==3)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="3">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>');
+			}
+			else if(fid==4)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="4">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>');
+			}
+		}
+		
 			$("#sucbut").prop( "href", "#" );
 		$(t).attr('src','<?php echo base_url(); ?>assets/mobile/img/common/upload_common.png');
 		$(t).attr('flaid',"undefined");
@@ -268,7 +346,7 @@ $.ajax({
 		{
 		alert('画像の削除');
 		$("#sucbut").prop( "href", "#" );
-        	window.location.href ="<?php echo $this->config->item('base_url'); ?>fupload";
+        	//window.location.href ="<?php echo $this->config->item('base_url'); ?>fupload";
 				
 		}
 		
@@ -296,9 +374,22 @@ $.ajax({
 			fresult="";
 			for (i = 0, len = imlist2.length; i < len; i++) {
 			if(i==0)
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			{
+			temp=imlist2[i]['fname'].split(",");
+				if(temp.length>2){
+			if(typeof temp[3]!='undefined'){
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+				}
+				else
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+			
+							}
+				else{
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
+			}
+			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);		
 		}
@@ -376,7 +467,7 @@ $.ajax({
 			</div>
 			 <div class="uploadArea">
                 
-				<div class="times"><span><?php if(isset($la))echo (++$la)."回目"; else echo "1回目";?></span></div>
+				<div class="times"><span id="fspan"><?php if(isset($la))echo (++$la)."回目"; else echo "1回目";?></span></div>
 				<div class="uploadWrap">
 				
 				<div class="upload">
@@ -416,18 +507,21 @@ $.ajax({
 					<div class="type_img"><img src="<?php echo base_url(); ?>assets/img/common/type_img_br_pc.png" alt="ブルーベリー＆ラズベリー" name="imgsmp"></div>
 						<div class="typeSelectWrap" style="position: relative;">
 						
-				<select name="focus" class="typeSelect hasCustomSelect" id="seldata" onchange="imgChange(this)" style="position: absolute;opacity: 0;margin-top: 0px;margin-left: 50px;border:0px"> 
+						
+				
+				<select name="focus" class="typeSelect hasCustomSelect" id="seldata" onchange="imgChange(this)" style="position: absolute;opacity: 0.34;margin-top: 0px;margin-left: 35px;min-width:300px;border:0px"> 
 								<option value="0" selected="selected">frooshのフレーバーを選択</option>
-								<option value="1" >ブルーベリー＆ラズベリー</option>
-								<option value="2">マンゴー＆オレンジ</option>
-								<option value="3">パイナップル・バナナ＆ココナッツ</option>
-								<option value="4">オレンジ・キャロット＆ジンジャー</option>
+								<option value="1" >ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>
+								<option value="2">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>
+								<option value="3">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>
+								<!--<option value="4">オレンジ・キャロット＆ジンジャー</option>-->
+								<option value="4">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>
 
 							</select>
-							<span class="typeSelectCustom typeSelect" style="display: inline-block;">
+<!--							<span class="typeSelectCustom typeSelect" style="display: inline-block;">
 			
 <span class="typeSelectCustomInner" style="display: inline-block;">マンゴー＆オレンジ</span>
-</span>
+</span>-->
 						</div>
 				</div>
 				<p class="notice fs14 center">既に登録した種類を<br />再度選択することはできません。</p>

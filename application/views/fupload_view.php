@@ -53,12 +53,12 @@ img1=new Image()
 
 	
 	function imgChange(parts){
-	fname=parts.options[parts.selectedIndex].value;
+	/*fname=parts.options[parts.selectedIndex].value;
 	if(fname==1){document.imgsmp.src=img1.src;}
 	if(fname==2){document.imgsmp.src=img2.src;}
 	if(fname==3){document.imgsmp.src=img3.src;}
 	if(fname==4){document.imgsmp.src=img4.src;}
-	if(fname==0){document.imgsmp.src=img4.src;}
+	if(fname==0){document.imgsmp.src=img4.src;}*/
 
 	}
 
@@ -80,20 +80,20 @@ $("#sucbut").prop( "href", "#" );
 			temp=imlist2[i]['fname'].split(",");
 				if(temp.length>2){
 				if(typeof temp[3]!='undefined'){
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
 				}
 				else
-				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
 			
 							}
 				else{
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			
 			}
 			else{
 			
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			}
 			$("#userstatus").html(fresult);	
@@ -113,45 +113,46 @@ var target = $(e.target);
 if(target.is("[id^='img']")){
 
 idClicked="#"+e.target.id;
-
 if(typeof $(idClicked).attr('flaid')=='undefined' || $(idClicked).attr('flaid')=='undefined'){
-$('#seldata')
-    .empty()
-	.append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
-    .append('<option value="1">ブルーベリー＆ラズベリー</option>')
-    .append('<option value="2">マンゴー＆オレンジ</option>')
-    .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
-    .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>')
-    
-;
 
-$("#seldata").attr("disabled",false);
-for ( i = 1; i <6; i++) {
-$("#seldata option[value='" + i+ "']").attr("disabled", false);
-}
+
+	x=parseInt($('#fspan').html());
+	data="ph="+x;
+	
+	$.ajax({
+		    url : "<?php echo base_url();?>home/success3",
+		    type: "POST",
+			data:data,
+		    success: function(data)
+		    {
+			imlist2=JSON.parse(data);
+		
+			if(typeof imlist2[0]!="undefined")
+			$("#seldata option[value='" + imlist2[0].image_fla_id+ "']").remove();
+			
+			}
+			});
+	$("#seldata").attr("disabled",false);
+	
+	
 
 }
 else
-
-
-
 {
 flaid=$(idClicked).attr('flaid');
 $('#seldata')
     .empty()
-	.append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
-    .append('<option value="1">ブルーベリー＆ラズベリー</option>')
-    .append('<option value="2">マンゴー＆オレンジ</option>')
-    .append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
-    .append('<option value="4">オレンジ・キャロット＆ジンジャー</option>')
-  
+    .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
+	.append('<option value="1" >ブルーベリー＆ラズベリー</option>')
+	.append('<option value="2">マンゴー＆オレンジ</option>')
+	.append('<option value="3">パイナップル・バナナ＆ココナッツ</option>')
+	.append('<option value="4">オレンジ・キャロット＆ジンジャー</option>')
 ;
 
 $("#seldata option[value='" + flaid + "']").attr("selected", true);
 $("#seldata").attr("disabled","disabled");
-
-
 }
+
 
 }
 });
@@ -215,18 +216,27 @@ maxFilesize:3,
 		iid=y[1];
 		//butstatus=y[2];
 		fl=y[3].split('-');
-		
+		if(typeof y[4]!='undefined'){
+		flid=y[4];
+		}
+		else
+		flid=0;
+		if(y[2]!=1){
 		if(fl.length>0)
-		
-		
+			
 		for(i=0;i<fl.length;i++)
 		{
 		//$("#seldata option[value='" + p[i]+ "']").attr("disabled", true);
 	
-		$("#seldata option[value='" + fl[i]+ "']").attr("disabled",true);
+		//$("#seldata option[value='" + fl[i]+ "']").attr("disabled",true);
+		//$("#seldata option[value='" + fl[i]+ "']").hide();
+		$("#seldata option[value='" + fl[i]+ "']").remove();
 		
-	
+
 		}
+		}
+		flist=fl;
+		$("#seldata option[value='0']").attr("selected","selected");
 		
 		$('.icon').hide();
 		$('#uploader').modal('hide');
@@ -235,7 +245,8 @@ maxFilesize:3,
 		$(idClicked).attr('iminfo',x.iid);
 		
 		$(idClicked).parent().prepend('<div class="remove bg_fit" onclick="iminfo(event,'+iid+');"></div>');
-		$(idClicked).attr('flaid',x.fname);
+		//$(idClicked).attr('flaid',x.fname);
+		$(idClicked).attr('flaid',flid);
 		
 		$(idClicked).attr('id',"img"+iid);
 		idClicked2="#img"+x.iid;
@@ -275,18 +286,18 @@ maxFilesize:3,
 			temp=imlist2[i]['fname'].split(",");
 				if(temp.length>2){
 			if(typeof temp[3]!='undefined'){
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
 				}
 				else
-				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
 			
 							}
 				else{
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);	
 			
@@ -325,7 +336,33 @@ $.ajax({
 	   {
 		alert('画像の削除');
 		t="#img"+x;
-			$("#sucbut").prop( "href", "#" );
+		fid=$(t).attr('flaid');
+	
+		if( typeof(fid)!="undefined")
+		{
+			if(fid==1)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="1" >ブルーベリー＆ラズベリー</option>')
+			}
+			else if(fid==2)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="2">マンゴー＆オレンジ</option>');
+			}
+			else if(fid==3)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="3">パイナップル・バナナ＆ココナッツ</option>');
+			}
+			else if(fid==4)
+			{
+				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+				$('#seldata').append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
+			}
+		}
+		
+		$("#sucbut").prop( "href", "#" );
 		$(t).attr('src','<?php echo base_url(); ?>assets/img/common/upload_common.png');
 		$(t).attr('flaid',"undefined");
 		$(this).next().hide();	
@@ -365,18 +402,18 @@ $.ajax({
 			temp=imlist2[i]['fname'].split(",");
 				if(temp.length>2){
 			if(typeof temp[3]!='undefined'){
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
 				}
 				else
-				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
 			
 							}
 				else{
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> application has been completed ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);		
 		}
@@ -504,7 +541,7 @@ echo 0; ?>  /> </div></div><?php } }?>
 			</div>
 			 <div class="uploadArea">
                 
-				<div class="times"><span><?php if(isset($la))echo (++$la)."回目"; else echo "1回目";?></span></div>
+				<div class="times"><span id="fspan"><?php if(isset($la))echo (++$la)."回目"; else echo "1回目";?></span></div>
 				<div class="uploadWrap">
 				
 				<div class="upload">

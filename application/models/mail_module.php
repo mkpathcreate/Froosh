@@ -368,7 +368,7 @@ function getuid($uname)
 		$x="`phase`=(select max(phase) from images where u_id=".$uid." and image_status=1)";
 		$this->db->select("DATE_FORMAT(image_up_date,'%Y/%m/%d') as idate",FALSE);
 		//$this->db->select("group_concat(image_fla_name) as fname");
-		$this->db->select("group_concat(image_fla_name) as fname");
+		$this->db->select("group_concat(image_fla_name) as fname,image_fla_id");
 		
 	        $this->db->from('images');
 		$this->db->where('u_id',$uid);
@@ -490,6 +490,43 @@ function getuid($uname)
 	{
 	return 0;
 	}
+	}
+	
+	function flv_list3($id,$ph){
+	$this->db->select('*');
+	$this->db->from('images');
+	$this->db->where('u_id',$id);
+	$this->db->where('image_status',1);
+	$this->db->where('phase',$ph);
+	$res=$this->db->get();
+	
+	 if($res->num_rows()>0){
+	 $temp=$res->result_array();
+	 return $temp;
+		}
+	else{
+	$ph=$ph-1;
+	$this->db->select('*');
+	$this->db->from('images');
+	$this->db->where('u_id',$id);
+	$this->db->where('image_status',1);
+	$this->db->where('phase',$ph);
+	$res2=$this->db->get();
+		if($res2->num_rows()>0 && $res2->num_rows()<4){
+			 $temp2=$res2->result_array();
+			 return $temp2;
+		}
+		else
+		{
+			$temp3=array("image_fla_id"=>0);
+			
+			return $temp3;
+		}
+	
+	}
+
+	
+	
 	}
 
 } 
