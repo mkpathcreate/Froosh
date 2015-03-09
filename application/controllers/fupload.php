@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  //http://www.formget.com/tutorial/codeigniter_image_manipulation/index.php/manipulation_controller/
  //http://www.9lessons.info/2014/07/ajax-upload-and-resize-image-with-php.html
+
 class fupload extends CI_Controller {
   
 public function __construct() 
@@ -13,6 +14,7 @@ public function __construct()
  
 public function index() 
    {
+
    if ($this->agent->is_mobile())
 			{
 	$this->load->view('fupload_view_mobile');
@@ -47,14 +49,17 @@ echo $flvdet2[0]['flv'];
 
 public function upload() 
    {
+  
 	$flid=0;
         $butstatus=0;
 	$imginfo['loc']=$_FILES['file']['tmp_name'];
-	$this->load->model('image_module');
+	
+	$this->load->model('image_module','',TRUE);
 	$session_data = $this->session->userdata('logged_in');
-
+	$x=array();
 	$uid=$session_data['uid'];
 
+    $phase=$this->input->post('phase');
 
 	if(isset($_POST['imid']) && $_POST['imid']!='undefined')
 	{
@@ -101,12 +106,16 @@ public function upload()
 	}
 	if($im!='')
 	{
+
 		$x=$this->image_module->imgstatusup($im);
 	}
 	else
 	{
-		$x=$this->image_module->getphaimgsec($uid);
+		//$x=$this->image_module->getphaimgsec($uid);
+	
+		$x=$this->image_module->getphaimgsec($uid,$phase);
 	}
+	
 	$res=array("loc"=>$imginfo,"file"=>$_FILES);
 	if (!empty($_FILES)) 
 	{
@@ -139,7 +148,7 @@ public function upload()
 					 $destination_path=FCPATH.'uploads/';
 					 $new_width=200;
 					 $new_height=267;
-					 log_message('error',$data['file_ext']);
+					
 					 if($data['file_ext']==".png")
 					 $type=2;
 					 elseif($data['file_ext']!=".png")
@@ -162,10 +171,10 @@ public function upload()
 			if(isset($uid))
 			$out['u_id']=$uid;
 			
-			if(isset($x[0]))
+			if(isset($x))
 			{
-			$out['phase']=$x[0]['phase'];
-			$out['image_sequence']=$x[0]['image_sequence'];
+			$out['phase']=$x['phase'];
+			$out['image_sequence']=$x['active'];
 			}
 			else
 			{
@@ -185,7 +194,7 @@ public function upload()
 			$flvdet=$flvdet[0]['flv'];
 			if($out['image_sequence']==1)
 			{
-			$this->image_module->user_smail($uid);
+			//	$this->image_module->user_smail($uid);
 			$this->session->set_userdata('image_det',1);
 						$butstatus=1;
 			}
@@ -203,7 +212,9 @@ public function upload()
 			
 		//$s=base_url()."uploads/thumb2_".$data['file_name'].",".$da.",".$butstatus;
 		$flvdet=str_replace(",","-",$flvdet);
-		$s=base_url()."uploads/".$data['file_name'].",".$da.",".$butstatus.",".$flvdet.",".$out['image_fla_id'];
+		$s=base_url()."uploads/".$data['file_name'].",".$da.",".$butstatus.",".$flvdet.",".$out['image_fla_id'].",".$x['deleted'].",".$x['active'];
+		//$s=$x[0]['deleted'].",".$x[0]['active'];
+		
 
 		echo $s;
 		

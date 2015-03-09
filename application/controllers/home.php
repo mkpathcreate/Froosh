@@ -206,6 +206,7 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
+
 	    $this->load->library('rememberme');  
 	    $this->load->model('mail_module');
             $cookie_user = $this->rememberme->verifyCookie();
@@ -453,16 +454,17 @@ class Home extends CI_Controller {
 		$im=$this->session->userdata('image_det');
 		$this->load->model('image_module');
 		$this->image_module->img_all($session_data['uid']);
-		if($im==1)
+		if($im==1 || $im==2 || $im==3)
 		{
 		
 		$wel=0;
+		$this->image_module->user_smail($session_data['uid']);
 		
 		}
 		elseif($im==$tf)
 		{
 		$this->image_module->user_fmail($session_data['uid']);
-		$this->image_module->admin_fmail($session_data['uid']);
+		// $this->image_module->admin_fmail($session_data['uid']);
 		}
 	
 		$this->session->unset_userdata('image_det');
@@ -504,10 +506,16 @@ class Home extends CI_Controller {
 	 
 	 $this->load->model('image_module');
 	 $x=$this->input->post( 'imid' );
-	 if($this->image_module->deleteimage($x))
-		echo "true";
-		else
-		echo "false";
+	 $phase=$this->input->post( 'phase' );
+	 $session_data = $this->session->userdata('logged_in');
+	 $uid=$session_data['uid'];
+	 $temp=$this->image_module->deleteimage($x,$phase,$uid);
+			if($temp)
+			{
+			 echo $temp;
+			}
+			else
+				echo "false";
 	 }
 
 	public function profile_edit() {
