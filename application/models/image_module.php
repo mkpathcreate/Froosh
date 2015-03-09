@@ -204,7 +204,7 @@ function user_smail($uid)
 		if(isset($res[0]))
 			{
 				$to=$res[0]['uemail'];
-				$apdate=$res[0]['ureg_date'];
+				$apdate=date('Y-m-d H:i:s');
 				$dt=explode(" ",$apdate);
 				$ydate=$dt[0];
 				$ytime=$dt[1];
@@ -291,7 +291,7 @@ function user_fmail($uid)
 		if(isset($res[0]))
 			{
 				$to=$res[0]['uemail'];
-				$apdate=$res[0]['ureg_date'];
+				$apdate=date('Y-m-d H:i:s');
 				$dt=explode(" ",$apdate);
 				$ydate=$dt[0];
 				$ytime=$dt[1];
