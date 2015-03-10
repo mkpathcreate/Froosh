@@ -249,6 +249,11 @@ $('#subutton').click(function(){
     <div id="header">
         <div class="logo"><a href="mypage.php"><img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/logo.png" alt="froosh"></a></div>
 
+
+        <div class="accountArea">
+            <div class="account_btn blockLink"><a href="<?php echo $this->config->item('base_url'); ?>home/login"><span>ログイン</span></a></div>
+	</div>
+
     </div>
 
     <div id="main">
@@ -301,7 +306,7 @@ $('#subutton').click(function(){
 				
 	<tr>
                         <th><p class="bold mt10">生年月日</p></th>
-                        <td>
+                        <td style="width:336px">
                         <div class="select_birth">
                             <div class="birthSelect_bg pie">
                             <select name="ubyear" id="birth_year" class="birthSelect">
