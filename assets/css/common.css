@@ -480,13 +480,13 @@ body.window {
 ----------------------------*/
 .btn_apply {
     position: relative;
-    width: 380px;
+    width: 430px;
     height: 70px;
     line-height: 70px;
     margin: 30px auto 10px auto;
     padding: 0 10px;
     text-align: center;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     color: #fff;
     border: 1px solid #638c0b;
