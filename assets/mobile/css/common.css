@@ -580,9 +580,10 @@ ol.pp_text li{
  活動履歴 area elements
 -------------------------------------------------- */
 .history {
-    line-height: 1.5em;
+    line-height: 1em;
 	_zoom: 1; 
 	overflow: hidden;
+    font-size: 12px;
 }
 
 .history.new{
