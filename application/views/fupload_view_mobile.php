@@ -68,19 +68,19 @@ $(document).ready(function(){
 			temp=imlist2[i]['fname'].split(",");
 				if(temp.length>2){
 				if(typeof temp[3]!='undefined'){
-					fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+					fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
 				}
 				else
-				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
 				}
 				else{
-					fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
+					fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+imlist2[i]['fname']+")</dd></dl>";
 				}
 			
 			}
 			else{
 			
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			}
 			$("#userstatus").html(fresult);	
@@ -262,18 +262,18 @@ maxFilesize:3,
 			temp=imlist2[i]['fname'].split(",");
 				if(temp.length>2){
 			if(typeof temp[3]!='undefined'){
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
 				}
 				else
-				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
 			
 							}
 				else{
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました ("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);	
 			
@@ -378,18 +378,18 @@ $.ajax({
 			temp=imlist2[i]['fname'].split(",");
 				if(temp.length>2){
 			if(typeof temp[3]!='undefined'){
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+","+temp[3]+")</dd></dl>";
 				}
 				else
-				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
+				fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+temp[0]+"		,"+temp[1]+",<br>"+temp[2]+")</dd></dl>";
 			
 							}
 				else{
-			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history new'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			}
 			else
-			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました。 ("+imlist2[i]['fname']+")</dd></dl>";
+			fresult+="<dl class='history'><dt>"+imlist2[i]['idate']+"</dt><dd> キャンペーンに応募しました("+imlist2[i]['fname']+")</dd></dl>";
 			}
 			$("#userstatus").html(fresult);		
 		}
