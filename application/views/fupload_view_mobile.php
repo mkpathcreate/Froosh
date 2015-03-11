@@ -27,7 +27,6 @@ $ci->load->library('user_agent',TRUE);
         <script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/common.js"></script>
         <script src="<?php echo $this->config->item('base_url'); ?>assets/mobile/js/image-scale.js"></script>
 
-
 <script type="text/javascript">
         var flist="";
         img1=new Image()
@@ -112,11 +111,13 @@ $(document).ready(function(){
 		    success: function(data)
 		    {
 			imlist2=JSON.parse(data);
-		
-			if(typeof imlist2[0]!="undefined")
-			$("#seldata option[value='" + imlist2[0].image_fla_id+ "']").remove();
-			else
-				$("#seldata option[value='0']").attr("selected","selected");
+			if(imlist2!=null)
+			{
+				if(typeof imlist2[0]!="undefined")
+					$("#seldata option[value='" + imlist2[0].image_fla_id+ "']").remove();
+				else
+					$("#seldata option[value='0']").attr("selected","selected");
+				}
 			}
 			});
 	$("#seldata").attr("disabled",false);
@@ -130,10 +131,10 @@ flaid=$(idClicked).attr('flaid');
 $('#seldata')
     .empty()
     .append('<option value="0" selected="selected">frooshのフレーバーを選択</option>')
-	.append('<option value="1" >ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>')
-	.append('<option value="2">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>')
-	.append('<option value="3">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>')
-	.append('<option value="4">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>')
+	.append('<option value="1">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>')
+	.append('<option value="2">ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>')
+	.append('<option value="3">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>')
+	.append('<option value="4">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>')	
 ;
 
 $("#seldata option[value='" + flaid + "']").attr("selected", true);
@@ -183,6 +184,8 @@ maxFilesize:3,
 	if(v2!='')
 	formData.append("imid",v2);
 	formData.append("flavor",v1);
+	cph=parseInt($('#fspan').html());
+	formData.append("phase",cph);
 	
 	},
 	success: function (response) {
@@ -206,6 +209,7 @@ maxFilesize:3,
 	
 		//$("#seldata option[value='" + fl[i]+ "']").attr("disabled",true);
 		//$("#seldata option[value='" + fl[i]+ "']").hide();
+		if(typeof fl[i]!="undefined")
 		$("#seldata option[value='" + fl[i]+ "']").remove();
 		
 
@@ -241,7 +245,6 @@ maxFilesize:3,
 		else
 		{
 		//$("#sucbut").hide();
-
 		} */
 		if(x.phase>1)
 		{
@@ -295,7 +298,9 @@ $("form#myDropzone .dz-clickable").trigger('click');
 
 function iminfo(event,x){
 event.stopPropagation();
-var formData={"imid":x};
+    cph=parseInt($('#fspan').html());
+	//formData.append("phase",cph);
+var formData={"imid":x,"phase":cph};
 if(confirm("確定しても宜しいですか？"))
 {
 $.ajax({
@@ -306,14 +311,47 @@ $.ajax({
     {
 	
 	$("#seldata").prop("disabled", false);
+		var del=data.split(',');
+		
+		if(typeof(del[1]!="undefined"))
+		if(del.length>1)
+		{
+			for(i=1;i<del.length;i++)
+			{
+				fid=del[i];
+		
+				if( typeof(fid)!="undefined")
+				{	
+					if(fid==1)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="1" >ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>')
+					}
+					else if(fid==2)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="2">ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>');
+					}
+					else if(fid==3)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="3">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>');
+					}
+					else if(fid==4)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="4">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>');
+					}
+				}
+			}
+		}
 	if (typeof(x) != "undefined")
 	   {
 		alert('画像の削除');
 		t="#img"+x;
-		fid=$(t).attr('flaid');
+	/*	fid=$(t).attr('flaid');
 		if( typeof(fid)!="undefined")
 		{
-
 			if(fid==1)
 			{
 				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
@@ -335,7 +373,8 @@ $.ajax({
 				$('#seldata').append('<option value="4">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>');
 			}
 		}
-		
+*/
+	
 			$("#sucbut").prop( "href", "#" );
 		$(t).attr('src','<?php echo base_url(); ?>assets/mobile/img/common/upload_common.png');
 		$(t).attr('flaid',"undefined");
@@ -487,7 +526,7 @@ $.ajax({
 		</div></div></div></div>
     <div class="btn_apply blockLink pie" style="cursor: pointer;">
 
-    <a href="<?php echo site_url('/home/success/'); ?>" id="sucbut">応募する</a>
+    <a href="<?php echo site_url('/home/success/'); ?>" id="sucbut" style="color:#fff;">応募する</a>
            
 	</div>
 	</div>
@@ -511,11 +550,12 @@ $.ajax({
 				
 				<select name="focus" class="typeSelect hasCustomSelect" id="seldata" onchange="imgChange(this)" style="position: absolute;opacity: 0.34;margin-top: 0px;margin-left: 35px;min-width:300px;border:0px"> 
 								<option value="0" selected="selected">frooshのフレーバーを選択</option>
-								<option value="1" >ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>
-								<option value="2">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>
-								<option value="3">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>
+								<option value="1">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>
+								<option value="2" >ﾏﾝｺﾞｰ&ｵﾚﾝｼﾞ</option>
+								<option value="3">ﾊﾟｲﾅｯﾌﾟﾙ･ﾊﾞﾅﾅ&ｺｺﾅｯﾂ</option>
+								<option value="4">ｵﾚﾝｼﾞ･ｷｬﾛｯﾄ&ｼﾞﾝｼﾞｬｰ</option>
 								<!--<option value="4">オレンジ・キャロット＆ジンジャー</option>-->
-								<option value="4">ﾌﾞﾙｰﾍﾞﾘｰ&ﾗｽﾞﾍﾞﾘｰ</option>
+								
 
 							</select>
 <!--							<span class="typeSelectCustom typeSelect" style="display: inline-block;">

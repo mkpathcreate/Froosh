@@ -13,16 +13,10 @@
 $ci = get_instance(); 
 $ci->load->library('user_agent',TRUE);
 ?>
-	   <?php
-		if ($ci->agent->is_mobile())
-		{
-		?>
-		<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/common.css" media="all">
-		<link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/mobile/css/webfont.css">
-		<?php } else { ?>
+	 
 <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/css/common.css" media="all">
 <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('base_url'); ?>assets/css/webfont.css">
-	<?php } ?>
+	
 
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.8.2.min.js"></script>
@@ -116,20 +110,24 @@ idClicked="#"+e.target.id;
 if(typeof $(idClicked).attr('flaid')=='undefined' || $(idClicked).attr('flaid')=='undefined'){
 
 
-	x=parseInt($('#fspan').html());
-	data="ph="+x;
 	
+	x=parseInt($('#fspan').html());
+	
+	data="ph="+x;
+
 	$.ajax({
 		    url : "<?php echo base_url();?>home/success3",
 		    type: "POST",
 			data:data,
 		    success: function(data)
 		    {
+			
 			imlist2=JSON.parse(data);
+			if(imlist2!=null){
 		
 			if(typeof imlist2[0]!="undefined")
 			$("#seldata option[value='" + imlist2[0].image_fla_id+ "']").remove();
-			
+			}
 			}
 			});
 	$("#seldata").attr("disabled",false);
@@ -204,11 +202,15 @@ maxFilesize:3,
 	if(v2!='')
 	formData.append("imid",v2);
 	formData.append("flavor",v1);
+	cph=parseInt($('#fspan').html());
+	formData.append("phase",cph);
 	
-	
+
 	},
 	success: function (response) {
+	
 		 $("#sucbut").attr("href","<?php echo site_url('/home/success/'); ?>");
+		 
 		var re=response.xhr.responseText;
 		//x = x.replace(/.*?:/g, "");
 		var y=re.split(',');
@@ -224,12 +226,13 @@ maxFilesize:3,
 		if(y[2]!=1){
 		if(fl.length>0)
 			
-		for(i=0;i<fl.length;i++)
+		for(i=0;i<=fl.length;i++)
 		{
 		//$("#seldata option[value='" + p[i]+ "']").attr("disabled", true);
 	
 		//$("#seldata option[value='" + fl[i]+ "']").attr("disabled",true);
 		//$("#seldata option[value='" + fl[i]+ "']").hide();
+		if(typeof fl[i]!="undefined")
 		$("#seldata option[value='" + fl[i]+ "']").remove();
 		
 
@@ -319,7 +322,10 @@ $("form#myDropzone .dz-clickable").trigger('click');
 
 function iminfo(event,x){
 event.stopPropagation();
-var formData={"imid":x};
+
+    cph=parseInt($('#fspan').html());
+	//formData.append("phase",cph);
+var formData={"imid":x,"phase":cph};
 if(confirm("確定しても宜しいですか？"))
 {
 $.ajax({
@@ -328,18 +334,18 @@ $.ajax({
     data : formData,
     success: function(data, textStatus, jqXHR)
     {
-	
-	
-	
-	$("#seldata").prop("disabled", false);
-	if (typeof(x) != "undefined")
-	   {
-		alert('画像の削除');
-		t="#img"+x;
-		fid=$(t).attr('flaid');
-	
-		if( typeof(fid)!="undefined")
+		$("#seldata").prop("disabled", false);
+		var del=data.split(',');
+		
+		if(typeof(del[1]!="undefined"))
+		/*if(del.length==2)
 		{
+		fid=del[1];
+		
+			if( typeof(fid)!="undefined")
+			{
+			
+		
 			if(fid==1)
 			{
 				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
@@ -360,7 +366,54 @@ $.ajax({
 				if ($("#seldata option[value='" + fid + "']").val() === undefined) 
 				$('#seldata').append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
 			}
+			
+			
+			}
+		
 		}
+		else*/
+		if(del.length>1)
+		{
+			for(i=1;i<del.length;i++)
+			{
+				fid=del[i];
+		
+				if( typeof(fid)!="undefined")
+				{
+			
+		
+					if(fid==1)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="1" >ブルーベリー＆ラズベリー</option>')
+					}
+					else if(fid==2)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="2">マンゴー＆オレンジ</option>');
+					}
+					else if(fid==3)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="3">パイナップル・バナナ＆ココナッツ</option>');
+					}
+					else if(fid==4)
+					{
+						if ($("#seldata option[value='" + fid + "']").val() === undefined) 
+						$('#seldata').append('<option value="4">オレンジ・キャロット＆ジンジャー</option>');
+					}
+				}
+			}
+		}
+	     
+	
+	if (typeof(x) != "undefined")
+	   {
+		alert('画像の削除');
+		t="#img"+x;
+		//fid=$(t).attr('flaid');
+	
+		
 		
 		$("#sucbut").prop( "href", "#" );
 		$(t).attr('src','<?php echo base_url(); ?>assets/img/common/upload_common.png');
@@ -468,29 +521,10 @@ $.ajax({
     </div>
 		<?php } ?>
 
-	<?php
-		if ($ci->agent->is_mobile())
-		{
-		?>
-		    <div id="main">
-    
-   
-        <div class="titleGroup">
-            <h1 class="title_text">frooshを飲んで北欧に行こう<br>キャンペーン応募ページ</h1>
-            <p class="notice fs14">応募期間：2015年3月31日まで</p>
-        </div>
-     
-        
-      
-        <h2 class="title_upload">写真投稿</h2>
-        <div class="box">
-            <p class="idt_1">※1枚投稿で<span class="notice">「参加賞(リサ･ラーソンの置物)」</span>への応募が完了し、4枚投稿で<span class="notice">「北欧往復チケット賞」</span>へ応募ができます。</p>
-		
-		<?php } else { ?>
+	
 		
     <div id="main">
-    
-       
+           
         <div class="titleGroup">
             <h1 class="title_text">froosh(フルーシュ)を飲んで北欧に行こう<br>キャンペーン応募ページ</h1>
             <p class="period">応募期間：2015年3月31日まで</p>
@@ -508,7 +542,7 @@ $.ajax({
 	
                     
     <div class="box mt0">                    
-		<?php } ?>
+		
               <div class="uploadArea" id="iview">
               
 				<?php if(isset($images)) { ?>
