@@ -276,8 +276,8 @@ offset-1 text-center">
     <!-- start : header -->
     <div id="header">
         <div class="logo"><a href="http://www.froosh-cp.jp"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
-        <div class="accountArea">
-            <!--<div class="account_btn blockLink"><a href="<?php echo $this->config->item('base_url'); ?>home/profile_edit"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>-->
+        <div class="accountArea" style="margin-top:5px;">
+            <div class="account_btn blockLink"><a href="<?php echo $this->config->item('base_url'); ?>home/login"><span>ログイン（登録済みの方）</span></a></div>
         </div>
     </div>
     <!-- end : header -->
