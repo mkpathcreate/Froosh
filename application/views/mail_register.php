@@ -549,12 +549,12 @@ $('#subutton').click(function(){
 	<hr>
 	<br>
 <div class="facebook pie"><a class="btn btn-block btn-social btn-facebook"  onClick="connect_fb()">
-            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/facebook.png" alt="Facebookと連携"></a></div>
+            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/facebook2.png" alt="Facebookと連携"></a></div>
 <div class="twitter pie"><a class="btn btn-block btn-social btn-twitter" onClick="connect_tw()" >
-           <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/twitter.png" alt="Twitterと連携"></a></div>
+           <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/twitter2.png" alt="Twitterと連携"></a></div>
 <div class="instagram pie">
 <a class="btn btn-block btn-social btn-instagram" onClick="connect_ig()"> 
-    <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/instagram.png" alt="instagramと連携"></a></div>
+    <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/instagram2.png" alt="instagramと連携"></a></div>
 
 
 
