@@ -186,11 +186,11 @@ function connect_tw()
         </form>
         <hr class="light mb30">
             <div class="facebook"><a class="btn btn-block btn-social btn-facebook"  onClick="connect_fb()">
-            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/facebook.png" alt="Facebook???????"></a></div>
+            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/facebook.png" alt="Facebook認証"></a></div>
             <div class="twitter"><a class="btn btn-block btn-social btn-twitter" onClick="connect_tw()" >
-            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/twitter.png" alt="Twitter???????"></a></div>
+            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/twitter.png" alt="Twitter認証"></a></div>
             <div class="instagram"><a class="btn btn-block btn-social btn-instagram" onClick="connect_ig()"> 
-            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/instagram.png" alt="instagram???????"></a></div>
+            <img src="<?php echo $this->config->item('base_url'); ?>assets/js/img/common/instagram.png" alt="instagram認証"></a></div>
 	</div>
     
     <div id="footer">
