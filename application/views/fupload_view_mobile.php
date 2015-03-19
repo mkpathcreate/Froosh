@@ -596,8 +596,7 @@ $.ajax({
                 <div class="step_body">
                     <div class="inner">
                         <h4><span class="icon-svg2 step_num"></span><span class="step_title">frooshの写真を撮る</span></h4>
-                        <p class="idt_1">※空の状態・中身が入った状態どちらでもOK!<br>
-                        ラベルが見えるように撮ってください。</p>
+                        <p>空の状態・中身が入った状態どちらでもOK！ラベルが見えるように撮ってください。</p>
                     </div>
                 </div>
             </div>
@@ -606,9 +605,9 @@ $.ajax({
                 <div class="step_img"><img src="<?php echo base_url(); ?>assets/js/img/common/step_02.png" alt=""></div>
                 <div class="step_body">
                     <div class="inner">
-                        <h4><span class="icon-svg3 step_num"></span><span class="step_title">写真を登録する</span></h4>
-                        <p class="idt_1">※４種類別々の写真を登録します。<br>
-                        1回の応募のうち､同じ種類は登録できません。</p>
+                        <h4><span class="icon-svg3 step_num"></span><span class="step_title">写真をアップロードする</span></h4>
+                        <p>４種類のフレーバー全て別々の写真をアップロードします。１回の応募のうち同じ種類はアップロードできません。<br><small>
+※ブラウザを閉じると、最初からやり直しになります。ご注意下さい。</small></p>
                     </div>
                 </div>
             </div>
@@ -618,7 +617,7 @@ $.ajax({
                 <div class="step_body">
                     <div class="inner">
                         <h4><span class="icon-svg4 step_num"></span><span class="step_title">応募する！</span></h4>
-                        <p class="idt_1">※４種類登録したら「応募する」ボタンを押します。キャンペーンは何度でも応募できます。</p>
+                        <p>４種類のフレーバーをアップロードしたら「キャンペーンに応募する」ボタンを押して、応募完了です。キャンペーンは何度でも応募できます。</p>
                     </div>
                 </div>
             </div>

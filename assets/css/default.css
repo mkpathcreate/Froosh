@@ -132,7 +132,7 @@ indent
 -------------------------------------------------- */
 .idt_1{
     padding-left: 1em;
-    text-indent: -1em;
+   /* text-indent: -1em;*/
 }
 .idt_1_5{
     padding-left: 1.5em;

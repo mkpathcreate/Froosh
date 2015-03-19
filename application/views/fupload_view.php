@@ -595,7 +595,7 @@ echo 0; ?>  /> </div></div><?php } }?>
 		</div></div></div></div>
     <div class="btn_apply blockLink pie" style="cursor: pointer;">
 
-    <a href="<?php echo site_url('/home/success/'); ?>" id="sucbut">応募する</a>
+    <a href="<?php echo site_url('/home/success/'); ?>" id="sucbut">キャンペーンに応募する</a>
            
 	</div>
 	</div>
@@ -673,8 +673,7 @@ echo 0; ?>  /> </div></div><?php } }?>
                 <div class="step_body">
                     <div class="inner">
                         <h4><span class="icon-svg2 step_num"></span><span class="step_title">frooshの写真を撮る</span></h4>
-                        <p class="idt_1">※空の状態・中身が入った状態どちらでもOK!<br>
-                        ラベルが見えるように撮ってください。</p>
+                        <p class="idt_1">空の状態・中身が入った状態どちらでもOK！<br>ラベルが見えるように撮ってください。</p>
                     </div>
                 </div>
             </div>
@@ -683,9 +682,8 @@ echo 0; ?>  /> </div></div><?php } }?>
                 <div class="step_img"><img src="<?php echo base_url(); ?>assets/js/img/common/step_02.png" alt=""></div>
                 <div class="step_body">
                     <div class="inner">
-                        <h4><span class="icon-svg3 step_num"></span><span class="step_title">写真を登録する</span></h4>
-                        <p class="idt_1">※４種類別々の写真を登録します。<br>
-                        1回の応募のうち､同じ種類は登録できません。</p>
+                        <h4><span class="icon-svg3 step_num"></span><span class="step_title">写真をアップロードする</span></h4>
+                        <p class="idt_1">４種類のフレーバー全て別々の写真をアップロードします。<br>１回の応募のうち同じ種類はアップロードできません。<br><small>※ブラウザを閉じると、最初からやり直しになります。ご注意下さい。</small></p>
                     </div>
                 </div>
             </div>
@@ -695,7 +693,7 @@ echo 0; ?>  /> </div></div><?php } }?>
                 <div class="step_body">
                     <div class="inner">
                         <h4><span class="icon-svg4 step_num"></span><span class="step_title">応募する！</span></h4>
-                        <p class="idt_1">※４種類登録したら「応募する」ボタンを押します。キャンペーンは何度でも応募できます。</p>
+                        <p class="idt_1">４種類のフレーバーをアップロードしたら<br>「キャンペーンに応募する」ボタンを押して、応募完了です。<br>キャンペーンは何度でも応募できます。</p>
                     </div>
                 </div>
             </div>
