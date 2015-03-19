@@ -16,14 +16,11 @@
 <script src="<?php echo $this->config->item('base_url'); ?>assets/js/common.js"></script>
 </head>
 <body id="top">
-
-
 <div id="wrapper">
 
 
     <!-- start : header -->
-    <div id="header">
-
+ 		 <div id="header">
         <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></div>
 
     </div>

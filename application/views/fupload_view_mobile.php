@@ -452,7 +452,7 @@ $.ajax({
 		
 		 <div id="header" style="height:92px">
 		 
-         <div class="logo"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></div>
+         <div class="logo"><a href="<?php echo $this->config->item('base_url'); ?>"><img src="<?php echo $this->config->item('base_url'); ?>assets/mobile/img/common/logo.png" alt="froosh"></a></div>
         <div class="accountArea">
             <div class="account_btn blockLink"><a href="<?php echo $this->config->item('base_url'); ?>home/profile_edit"><span>アカウント</span><span class="icon-svg a_icon"></span></a></div>
 			<div class="account_btn blockLink" style="margin-top:10px"><a href="<?php echo $this->config->item('base_url')."home/logout/"; ?>"><span>ログアウト</span></a></div>
@@ -526,7 +526,7 @@ $.ajax({
 		</div></div></div></div>
     <div class="btn_apply blockLink pie" style="cursor: pointer;">
 
-    <a href="<?php echo site_url('/home/success/'); ?>" id="sucbut" style="color:#fff;">応募する</a>
+    <a href="<?php echo site_url('/home/success/'); ?>" id="sucbut" style="color:#fff;">キャンペーンに応募する</a>
            
 	</div>
 	</div>
