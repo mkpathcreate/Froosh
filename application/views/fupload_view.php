@@ -580,18 +580,18 @@ echo 0; ?>  /> </div></div><?php } }?>
 				
 				<div class="upload">
 				
-	<div  id="buploader2" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img2" src="<?php echo base_url(); ?>assets/img/common/upload_common.png"  height=206 width=200  /> </div>
+	<div  id="buploader2" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; float:left; cursor:pointer;"><img id="img2" src="<?php echo base_url(); ?>assets/img/common/upload_common.png"  height=206 width=200  /> </div>
 	</div>
 	<div class="upload">
-	<div  id="buploader3" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img3" src="<?php echo base_url(); ?>assets/img/common/upload_common.png" height=206 width=200 /> </div>
+	<div  id="buploader3" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; float:left; cursor:pointer;"><img id="img3" src="<?php echo base_url(); ?>assets/img/common/upload_common.png" height=206 width=200 /> </div>
 	</div>
 	<div class="upload">
-	<div  id="buploader4" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img id="img4" src="<?php echo base_url(); ?>assets/img/common/upload_common.png" height=206 width=200  /> </div>
+	<div  id="buploader4" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; float:left; cursor:pointer;"><img id="img4" src="<?php echo base_url(); ?>assets/img/common/upload_common.png" height=206 width=200  /> </div>
 	</div>
 	<div class="upload">
     <div style="display:block;text-align:center">
 	
-	<div  id="buploader5" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px; border:1px solid ; float:left; cursor:pointer;"><img  id="img5" src="<?php echo base_url(); ?>assets/img/common/upload_common.png"  height=206 width=200  /> </div>
+	<div  id="buploader5" data-toggle="modal" data-target="#uploader"  style="width:160px;  margin-right: 4px; height:208px;float:left; cursor:pointer;"><img  id="img5" src="<?php echo base_url(); ?>assets/img/common/upload_common.png"  height=206 width=200  /> </div>
 		</div></div></div></div>
     <div class="btn_apply blockLink pie" style="cursor: pointer;">
 
