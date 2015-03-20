@@ -29,11 +29,11 @@
                     <div class="box">
                         <img src="<?php echo base_url();?>assets/home/img/btl_org2.jpg" width="118" height="192" alt="fooshマンゴー・オレンジ" class="btl">
                         <ol>
-                            <li><span>&#9312;</span> 都会的で洗練されたファッショナブルな人々へ <span><br>
-                心地よいライフスタイル、新たな食のカルチャー</span>を提供</li>
-                            <li><span>&#9313;</span> 圧倒的な市場品質と<span>プレミア（本物志向）</span>
+                            <li><span>&#9312;</span>都会的で洗練されたファッショナブルな人々へ<br>
+<span>心地よいライフスタイル、新たな食のカルチャー</span>を提供</li>
+                            <li><span>&#9313;</span>圧倒的な市場品質と<span>プレミア（本物志向）</span>
                             </li>
-                            <li><span>&#9314;</span> 原産国（新興国）の生産者との<span>フェアトレードによる社会貢献</span>
+                            <li><span>&#9314;</span>原産国（新興国）の生産者との<span>フェアトレードによる社会貢献</span>
                             </li>
                         </ol>
                         <p class="btl_under">見た目、期待以上の味わい</p>
@@ -51,14 +51,14 @@
                     <h3 class="right"><img src="<?php echo base_url();?>assets/home/img/ttl_toku.png" width="621" height="68" alt="フルーシュスムージーの特徴"></h3>
                     <div class="box">
                         <ol>
-                            <li><span>&#9312; 添加＆ストレート</span>
-                                <br>　素材そのまま濃厚フルボディの味わい
+                            <li><span>&#9312;添加＆ストレート</span>
+<br>素材そのまま濃厚フルボディの味わい
                             </li>
-                            <li><span>&#9313; キュートなデザイン＆低カロリー</span>
-                                <br>　さらにマニフェストというラベルメッセージがみんなの心に残る
+                            <li><span>&#9313;キュートなデザイン＆低カロリー</span>
+<br>さらにマニフェストというラベルメッセージがみんなの心に残る
                             </li>
-                            <li><span>&#9314; ミシュランスターシェフも称賛</span>
-                                <br>　5～8種類のフルーツによる、飽きが来ない美味しさ
+                            <li><span>&#9314;ミシュランスターシェフも称賛</span>
+<br>5～8種類のフルーツによる、飽きが来ない美味しさ
                             </li>
                         </ol>
                         <img src="<?php echo base_url();?>assets/home/img/btl_pnk2.jpg" width="107" height="210" alt="fooshストロベリー・グァバ" class="btl">
@@ -67,23 +67,20 @@
                     </div>
                     <div class="box">
                         <div class="box2">
-                            <img src="<?php echo base_url();?>assets/home/img/img_fruits.jpg" width="318" height="180" alt="ナナ、ストロベリー、アップル、など多彩なフルーツを仕様">
-                            <p>最高品質のバナナ、ストロベリー、アップル、
-                                <br> その他約15種類をそのまま使用
-                            </p>
+                            <img src="<?php echo base_url();?>assets/home/img/img_fruits.jpg" width="318" height="180" alt="バナナ、ストロベリー、アップル、など多彩なフルーツを仕様">
+                            <p>最高品質のバナナ、ストロベリー、アップル、<br>その他約15種類をそのまま使用</p>
                         </div>
                         <div class="box2">
                             <img src="<?php echo base_url();?>assets/home/img/img_micelin.png" width="361" height="178" alt="ミシュランガイドイメージ">
-                            <p>美味しさへのこだわり
-                                <br> 甘み・酸味などバランスのとれた味わい
+                            <p>美味しさへのこだわり<br>甘み・酸味などバランスのとれた味わい
                             </p>
                         </div>
                         <!-- /.box -->
                     </div>
-                    <img src="<?php echo base_url();?>assets/home/img/img_mani.jpg" width="745" height="337" alt="ラベルマニフェスト→あなたに伝えたいコンセプトライフスタイルシーン" class="mani_img">
+                    <img src="<?php echo base_url();?>assets/home/img/img_mani.jpg" width="696" height="337" alt="ラベルマニフェスト→あなたに伝えたいコンセプトライフスタイルシーン" class="mani_img">
         
                     <!-- /.box -->
-                    <img src="<?php echo base_url();?>assets/home/img/img_manicam.png" width="715" height="127" alt="2015年2月より消費者参加型の「マニフェスト・ライフスタイルキャンペーン」実施" class="mani_bar">
+                    <img src="<?php echo base_url();?>assets/home/img/img_manicam.png" width="715" height="127" alt="2015年4月より消費者参加型の「マニフェスト・ライフスタイルキャンペーン」実施" class="mani_bar">
         
                     <!-- /.box -->
                     <div class="box">
@@ -105,12 +102,11 @@
                 </div>
                 <div id="life">
                     <h3><img src="<?php echo base_url();?>assets/home/img/ttl_life.png" width="674" height="72" alt="フルーシュ・ライフスタイルを提案（掲載誌）"></h3>
-                    <div class="row">
+                    <div class="lc">
+                    <div class="row lifehead">
                         <div class="box btl">
                             <img src="<?php echo base_url();?>assets/home/img/btl_brn2.jpg" width="110" height="219" alt="frooshパイナップル・バナナ">
-                            <p class="btl_under">今までにない
-                                <br> やみつきになる美味しさ
-                            </p>
+                            <p class="btl_under">今までにない<br>やみつきになる美味しさ</p>
                             <!-- /.box -->
                         </div>
                         <div class="box top">
@@ -140,6 +136,8 @@
                             <!-- /.box -->
                         </div>
                         <!-- /.row -->
+                     </div>
+                    <!-- /.lc -->
                     </div>
                     <!-- /#life -->
                 </div>
@@ -165,7 +163,7 @@
                 <div id="ikou">
                     <h3><img src="<?php echo base_url();?>assets/home/img/ttl_hokuou.png" width="745" height="147" alt="応募のイメージ"></h3>
                     <p>本キャンペーンでは、購入した商品の画像データが応募要件になります。
-                        <br> 応募期間：2014年11月X日より2015年3月31日まで
+                        <br> 応募期間：2015年4月1日より2015年6月30日まで
                     </p>
                     <div class="inner">
                         <h4>&#9312; 参加賞　抽選で50名様</h4>
@@ -183,9 +181,7 @@
                         </table>
                         <div class="btl">
                             <img src="<?php echo base_url();?>assets/home/img/btl_grn2.jpg" width="66" height="164" alt="frooshキャロット・ジンジャー">
-                            <p>ちょっと驚きの
-                                <br> キャロット＆ジンジャー
-                            </p>
+                            <p>ちょっと驚きの<br>キャロット＆ジンジャー</p>
                             <!-- /.btl -->
                         </div>
                         <img src="<?php echo base_url();?>assets/home/img/img_lisa.jpg" width="745" height="194" alt="LISA LARSON置物イメージ">
