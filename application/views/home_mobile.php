@@ -69,15 +69,18 @@
                     
 					<p class="center col-md-15">
 	<a style="color:white; text-decoration:none;" href="<?php echo $this->config->item('base_url'); ?>home/mail"><button class="btn btn-primary">Mail</button></a>
-	 <a class="btn btn-block btn-social btn-facebook"  onClick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-facebook']);" href="/froosh/auth/session/facebook">
+	 
+
+
+<a class="btn btn-block btn-social btn-facebook" href="<?php echo $this->config->item('base_url'); ?>home/mail">
             <i class="fa fa-facebook"></i>Sign in with Facebook</a>
-	<!--<a href="/froosh/auth/session/facebook"><input type="button" name="facebook" id="facebook" value="Facebook"></a>  -->
-	<a class="btn btn-block btn-social btn-instagram" onClick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-instagram']);" href="/froosh/auth/session/instagram">
-            <i class="fa fa-instagram"></i> Sign in with Instagram</a> 
-	<!--<a href="/froosh/auth/session/twitter"><input type="button" name="twitter" id="twitter" value="Twitter"></a> -->
-	 <a class="btn btn-block btn-social btn-twitter" onClick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-twitter']);" href="/froosh/auth/session/twitter">
+
+<a class="btn btn-block btn-social btn-twitter" href="<?php echo $this->config->item('base_url'); ?>home/mail">
             <i class="fa fa-twitter"></i> Sign in with Twitter</a>
-	<!--<a href="/froosh/auth/session/instagram"><input type="button" name="instagram" id="instagram" value="Instagram"></a>-->
+
+<a class="btn btn-block btn-social btn-instagram" href="<?php echo $this->config->item('base_url'); ?>home/mail">
+            <i class="fa fa-instagram"></i> Sign in with Instagram</a> 	
+
 			</p>
     
                 </fieldset>
@@ -114,7 +117,11 @@
                         <li>
                             <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
                         </li>
-                    </ul>
+                    </ul> 
+		
+			
+
+
                     <hr class="small">
                     <p class="text-muted">Copyright &copy; Your Website 2014</p>
                 </div>
@@ -122,11 +129,13 @@
         </div>
     </footer>
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="<?php echo $this->config->item('base_url'); ?>/files/files/js/jquery-1.11.0.js"></script>
+    <!-- jQuery Version 1.11.0 
+    <script src="<?php //echo $this->config->item('base_url'); ?>/files/files/js/jquery-1.11.0.js"></script> -->
+	<script src="<?php echo $this->config->item('base_url'); ?>assets/js/jquery-1.8.2.min.js" type="text/javascript">
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo $this->config->item('base_url'); ?>/files/files/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript 
+    <script src="<?php //echo $this->config->item('base_url'); ?>/files/files/js/bootstrap.min.js"></script> -->
+<script src="<?php echo $this->config->item('base_url'); ?>assets/assets2/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script>
@@ -157,7 +166,79 @@
                 }
             }
         });
+
+	//Additional start 
+	$("#formID").bind("jqv.field.result", function(event, field, errorFound, prompText){ console.log(errorFound) })
+	 $.oauthpopup = function(options)
+	    {
+        if (!options || !options.path) {
+            throw new Error("options.path must not be empty");
+        }
+        options = $.extend({
+            windowName: 'ConnectWithOAuth' // should not include space for IE
+          , windowOptions: 'location=0,status=0,width=800,height=400'
+          , callback: function(){ window.location.reload(); }
+        }, options);
+ 
+        var oauthWindow   = window.open(options.path, options.windowName, options.windowOptions);
+        var oauthInterval = window.setInterval(function(){
+            if (oauthWindow.closed) {
+                window.clearInterval(oauthInterval);
+                options.callback();
+            }
+        }, 1000);
+ 	   };
+ 
+ 	   //bind to element and pop oauth when clicked
+	    $.fn.oauthpopup = function(options) {
+	        $this = $(this);
+        	$this.click($.oauthpopup.bind(this, options));
+	    };
+      ////Additional End
+
+
+
     });
+//Additional2 Start
+	function finishAjax(id, response){
+  $('#'+id).html(unescape(response));
+  $('#'+id).fadeIn();
+} 
+
+	function connect_tw()
+	{	
+	     $.oauthpopup({
+          path: 'http://rhytha.info/froosh/auth/session/twitter',
+          callback: function(){
+           //window.location = '';
+		   }        
+	    });
+	}
+
+	function connect_fb()
+	{	
+	     $.oauthpopup({
+          path: 'http://rhytha.info/froosh/auth/session/facebook',
+          callback: function(){
+           //window.location = '';
+		   }        
+	    });
+	}
+	function connect_ig()
+	{	
+	     $.oauthpopup({
+          path: 'http://rhytha.info/froosh/auth/session/instagram',
+          callback: function(){
+           //window.location = '';
+		   }        
+	    });
+	}
+	function updateValue(id, value) 
+	{ 
+	    // this gets called from the popup window and updates the field with a new value 
+	    document.getElementById(id).value = value; 
+	} 
+//Additional2 End
     </script>
 
 </body>
